@@ -11,8 +11,8 @@ const Navbar = () => {
     </>
   );
   return (
-    <div>
-      <div className="navbar my-6 container mx-auto bg-base-100">
+    <div className="py-2 bg-base-300">
+      <div className="navbar container mx-auto">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -33,7 +33,7 @@ const Navbar = () => {
             </div>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content font-josefin font-semibold bg-base-100 rounded-box z-[1] mt-3 p-2 shadow"
+              className="menu menu-sm dropdown-content font-josefin font-semibold bg-base-200 w-48 rounded-sm z-[1] mt-4 p-3 gap-3"
             >
               {navMenu}
             </ul>
@@ -61,7 +61,7 @@ const Navbar = () => {
             </div>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow font-josefin font-semibold"
+              className="menu menu-sm dropdown-content bg-base-200 z-[1] mt-4 w-52 p-3 font-josefin font-semibold"
             >
               <li>
                 <a className="justify-between">
