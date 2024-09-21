@@ -33,7 +33,7 @@ const Navbar = () => {
             </div>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content font-josefin font-semibold bg-base-200 w-48 rounded-sm z-[1] mt-4 p-3 gap-3"
+              className="menu menu-sm dropdown-content font-josefin font-semibold bg-base-200 w-48 rounded-sm z-[10] mt-4 p-3 gap-3"
             >
               {navMenu}
             </ul>
@@ -61,7 +61,7 @@ const Navbar = () => {
             </div>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content bg-base-200 z-[1] mt-4 w-52 p-3 font-josefin font-semibold"
+              className="menu menu-sm dropdown-content bg-base-200 z-[10] mt-4 w-52 p-3 font-josefin font-semibold"
             >
               <li>
                 <a className="justify-between">
