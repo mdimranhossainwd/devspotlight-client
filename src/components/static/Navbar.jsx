@@ -7,7 +7,7 @@ const Navbar = () => {
       <NavLink to="/product">Product</NavLink>
       <NavLink to="/blog">Blog</NavLink>
       <NavLink>About</NavLink>
-      <NavLink>Contact</NavLink>
+      <NavLink to="/login">Login</NavLink>
     </>
   );
   return (
@@ -64,10 +64,7 @@ const Navbar = () => {
               className="menu menu-sm dropdown-content bg-base-200 z-[10] mt-4 w-52 p-3 font-josefin font-semibold"
             >
               <li>
-                <a className="justify-between">
-                  Profile
-                  <span className="badge">New</span>
-                </a>
+                <a>Profile</a>
               </li>
               <li>
                 <a>Settings</a>

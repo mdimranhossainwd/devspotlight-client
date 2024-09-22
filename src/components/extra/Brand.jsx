@@ -2,10 +2,10 @@ import Marquee from "react-fast-marquee";
 
 const Brand = () => {
   return (
-    <div className="py-20 bg-white">
+    <div className="py-20 bg-white mb-8">
       <div className="container mx-auto">
         <div className="text-center max-w-2xl mx-auto py-3 space-y-3">
-          <h2 className="text-4xl font-josefin font-bold">Our Brands</h2>
+          <h2 className="text-4xl font-josefin mb-8 font-bold">Our Brands</h2>
           {/* <p className="text-md pb-8 font-medium">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum
             exercitationem esse voluptatum. Impedit quas tempore fugit esse
