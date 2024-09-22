@@ -7,7 +7,7 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 
 // import required modules
-import { Autoplay, Pagination } from "swiper/modules";
+import { Autoplay } from "swiper/modules";
 import Slide from "./Slide";
 
 export default function Carousel() {
@@ -18,14 +18,14 @@ export default function Carousel() {
         centeredSlides={true}
         loop={true}
         autoplay={{
-          delay: 2000,
+          delay: 3000,
           disableOnInteraction: false,
         }}
         pagination={{
           clickable: true,
         }}
         navigation={false}
-        modules={[Autoplay, Pagination]}
+        modules={[Autoplay]}
         className="mySwiper"
       >
         <SwiperSlide>
