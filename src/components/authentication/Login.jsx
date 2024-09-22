@@ -1,4 +1,5 @@
 import { FaGoogle } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const Login = () => {
   return (
@@ -11,7 +12,7 @@ const Login = () => {
           Sign in to access your dashboard, settings, and projects.
         </p>
 
-        <button className="w-full flex items-center justify-center gap-3 text-md bg-gray-700 text-white font-semibold py-3 rounded-md mb-6">
+        <button className="w-full flex items-center justify-center gap-3 text-md border-gray-300 border text-black font-semibold py-3 rounded-md mb-6">
           <FaGoogle />
           <span>Connect with Google</span>
         </button>
@@ -71,9 +72,9 @@ const Login = () => {
 
         <div className="mt-6 text-md font-semibold text-gray-500">
           No account?{" "}
-          <a href="#" className="text-black">
+          <Link to="/signup" className="text-black">
             Create an account
-          </a>
+          </Link>
         </div>
       </div>
     </div>
