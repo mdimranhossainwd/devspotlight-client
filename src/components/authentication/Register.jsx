@@ -1,6 +1,22 @@
+import { useContext } from "react";
 import { FaGoogle } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../../provider/AuthProvider";
 
 const Register = () => {
+  const navigate = useNavigate();
+  const { signInWithGoogle } = useContext(AuthContext);
+
+  const handleGoogleSignUp = async () => {
+    try {
+      const result = await signInWithGoogle();
+      console.log(result);
+      navigate("/");
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100 py-10">
       <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-2xl">
@@ -11,7 +27,10 @@ const Register = () => {
           Welcome back! Please enter your details
         </p>
 
-        <button className="w-full flex items-center justify-center bg-white text-gray-700 border border-gray-300 py-2 px-4 rounded-lg hover:bg-gray-50 mb-4 gap-3">
+        <button
+          onClick={handleGoogleSignUp}
+          className="w-full flex items-center justify-center bg-white text-gray-700 border border-gray-300 py-2 px-4 rounded-lg hover:bg-gray-50 mb-4 gap-3"
+        >
           <FaGoogle />
           <span>Sign up with Google</span>
         </button>
