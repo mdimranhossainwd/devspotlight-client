@@ -14,7 +14,7 @@ const Newsletter = () => {
             <h1 className="text-4xl font-josefin font-bold">
               Subscribe to our Newsletter
             </h1>
-            <p className="py-3 text-lg font-medium mb-6">
+            <p className="py-3 text-md font-medium mb-6">
               Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
               excepturi exercitationem quasi. In deleniti eaque aut repudiandae
               et a id nisi.
