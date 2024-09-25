@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
 
 const Register = () => {
-  const { register, handleSubmit, watch } = useForm();
+  const { register, handleSubmit } = useForm();
   const navigate = useNavigate();
   const { signInWithGoogle, user, createUser, setUser, updateUserProfile } =
     useContext(AuthContext);

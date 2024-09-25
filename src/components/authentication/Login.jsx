@@ -1,7 +1,39 @@
+import { useContext } from "react";
+import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
 import { FaGoogle } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../provider/AuthProvider";
 
 const Login = () => {
+  const navigate = useNavigate();
+  const { signInWithGoogle, signIn } = useContext(AuthContext);
+
+  const { register, handleSubmit } = useForm();
+
+  // LOGIN WITH FUNCTIONALITY
+  const handleLogin = async (data) => {
+    const { email, password } = data;
+    try {
+      const result = await signIn(email, password);
+      console.log(result);
+      toast.success("SignIn Successfully");
+      navigate("/");
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  // GOOGLE LOGIN FUNCTIONS
+  const handleGoogleSignUp = async () => {
+    try {
+      const result = await signInWithGoogle();
+      console.log(result);
+      navigate("/");
+    } catch (err) {
+      console.log(err);
+    }
+  };
   return (
     <div className="flex justify-center items-center min-h-screen bg-gray-100">
       <div className="bg-white p-8 rounded-lg shadow-lg max-w-md w-full text-center">
@@ -12,7 +44,10 @@ const Login = () => {
           Sign in to access your dashboard, settings, and projects.
         </p>
 
-        <button className="w-full flex items-center justify-center gap-3 text-md border-gray-300 border text-black font-semibold py-3 rounded-md mb-6">
+        <button
+          onClick={handleGoogleSignUp}
+          className="w-full flex items-center justify-center gap-3 text-md border-gray-300 border text-black font-semibold py-3 rounded-md mb-6"
+        >
           <FaGoogle />
           <span>Connect with Google</span>
         </button>
@@ -24,7 +59,7 @@ const Login = () => {
           <div className="border-t border-gray-300"></div>
         </div>
 
-        <form>
+        <form onSubmit={handleSubmit(handleLogin)}>
           <div className="mb-4 text-left">
             <label
               htmlFor="email"
@@ -35,6 +70,7 @@ const Login = () => {
             <input
               type="email"
               id="email"
+              {...register("email", { required: true })}
               className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-orange-500"
               placeholder="Enter your email"
             />
@@ -50,6 +86,7 @@ const Login = () => {
             <input
               type="password"
               id="password"
+              {...register("password", { required: true })}
               className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-orange-500"
               placeholder="Enter your password"
             />

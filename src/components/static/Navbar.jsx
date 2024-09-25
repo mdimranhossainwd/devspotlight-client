@@ -1,13 +1,21 @@
+import { useContext } from "react";
 import { NavLink } from "react-router-dom";
+import { AuthContext } from "../../provider/AuthProvider";
 
 const Navbar = () => {
+  const { user, logOut } = useContext(AuthContext);
+
+  const handleLogOut = async () => {
+    await logOut();
+  };
+
   const navMenu = (
     <>
       <NavLink to="/">Home</NavLink>
       <NavLink to="/product">Product</NavLink>
       <NavLink to="/blog">Blog</NavLink>
       <NavLink>About</NavLink>
-      <NavLink to="/login">Login</NavLink>
+      {!user && <NavLink to="/login">Login</NavLink>}
     </>
   );
   return (
@@ -45,36 +53,38 @@ const Navbar = () => {
             {navMenu}
           </ul>
         </div>
-        <div className="navbar-end">
-          <div className="dropdown dropdown-end ">
-            <div
-              tabIndex={0}
-              role="button"
-              className="btn btn-ghost btn-circle avatar"
-            >
-              <div className="w-10 rounded-full">
-                <img
-                  alt="Tailwind CSS Navbar component"
-                  src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
-                />
+        {user && (
+          <div className="navbar-end">
+            <div className="dropdown dropdown-end ">
+              <div
+                tabIndex={0}
+                role="button"
+                className="btn btn-ghost btn-circle avatar"
+              >
+                <div className="w-10 rounded-full">
+                  <img
+                    alt="Tailwind CSS Navbar component"
+                    src={user?.photoURL}
+                  />
+                </div>
               </div>
+              <ul
+                tabIndex={0}
+                className="menu menu-sm dropdown-content bg-base-200 z-[10] mt-4 w-52 p-3 font-josefin font-semibold"
+              >
+                <li>
+                  <a>{user?.displayName}</a>
+                </li>
+                <li>
+                  <a>Settings</a>
+                </li>
+                <li onClick={handleLogOut}>
+                  <a>Logout</a>
+                </li>
+              </ul>
             </div>
-            <ul
-              tabIndex={0}
-              className="menu menu-sm dropdown-content bg-base-200 z-[10] mt-4 w-52 p-3 font-josefin font-semibold"
-            >
-              <li>
-                <a>Profile</a>
-              </li>
-              <li>
-                <a>Settings</a>
-              </li>
-              <li>
-                <a>Logout</a>
-              </li>
-            </ul>
           </div>
-        </div>
+        )}
       </div>
     </div>
   );
