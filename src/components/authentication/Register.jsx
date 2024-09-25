@@ -1,12 +1,33 @@
 import { useContext } from "react";
+import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
 import { FaGoogle } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
 
 const Register = () => {
+  const { register, handleSubmit, watch } = useForm();
   const navigate = useNavigate();
-  const { signInWithGoogle } = useContext(AuthContext);
+  const { signInWithGoogle, user, createUser, setUser, updateUserProfile } =
+    useContext(AuthContext);
 
+  // CREATE USER FUNCTIONS
+  const handleSignUp = async (data) => {
+    const { email, name, password, photo } = data;
+    console.log({ email, name, password, photo });
+
+    try {
+      const result = await createUser(email, password);
+      await updateUserProfile(name, photo);
+      setUser({ ...result?.user, photoURL: photo, displayName: name });
+      navigate("/");
+      toast.success("SignUp Successfully ");
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  // GOOGLE LOGIN FUNCTIONS
   const handleGoogleSignUp = async () => {
     try {
       const result = await signInWithGoogle();
@@ -37,13 +58,15 @@ const Register = () => {
 
         <div className="text-center text-gray-500 mb-4">OR</div>
 
-        <form action="">
+        <form onSubmit={handleSubmit(handleSignUp)}>
           <div className="mb-4">
             <label className="block text-gray-700 text-md font-semibold mb-1">
               Name
             </label>
             <input
               type="text"
+              id="name"
+              {...register("name", { required: true })}
               className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
               placeholder="Enter your name"
             />
@@ -55,6 +78,8 @@ const Register = () => {
             </label>
             <input
               type="email"
+              id="email"
+              {...register("email", { required: true })}
               className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
               placeholder="Enter your email"
             />
@@ -66,6 +91,8 @@ const Register = () => {
             </label>
             <input
               type="password"
+              id="password"
+              {...register("password", { required: true })}
               className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
               placeholder="Enter your password"
             />
@@ -76,23 +103,28 @@ const Register = () => {
               Photo URL
             </label>
             <input
-              type="password"
+              type="text"
+              id="photo"
+              {...register("photo")}
               className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
               placeholder="Photo URL Link here ...."
             />
           </div>
+
+          <div className="mb-4 flex items-center">
+            <input type="checkbox" className="mr-2" />
+            <label className="text-gray-700">
+              I accept all terms & conditions.
+            </label>
+          </div>
+
+          <button
+            type="submit"
+            className="w-full bg-gradient-to-r from-[#7ed56f] to-[#28b485] text-white py-2 px-4 rounded-lg "
+          >
+            Sign in
+          </button>
         </form>
-
-        <div className="mb-4 flex items-center">
-          <input type="checkbox" className="mr-2" />
-          <label className="text-gray-700">
-            I accept all terms & conditions.
-          </label>
-        </div>
-
-        <button className="w-full bg-gradient-to-r from-[#7ed56f] to-[#28b485] text-white py-2 px-4 rounded-lg ">
-          Sign in
-        </button>
 
         <p className="text-center font-semibold text-gray-500 mt-4">
           Already have an account?{" "}
