@@ -76,7 +76,7 @@ const Navbar = () => {
                   <a>{user?.displayName}</a>
                 </li>
                 <li>
-                  <a>Settings</a>
+                  <a>Dashboard</a>
                 </li>
                 <li onClick={handleLogOut}>
                   <a>Logout</a>

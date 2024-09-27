@@ -7,7 +7,7 @@ import video from "../assets/video.mp4";
 const ContactSections = () => {
   return (
     <div>
-      <section className="relative my-20 bg-opacity-0">
+      <section className="relative my-20 bg-opacity-60">
         <video
           autoPlay
           loop
@@ -18,11 +18,11 @@ const ContactSections = () => {
         </video>
 
         {/* Overlay to darken video */}
-        <div className="absolute inset-0 bg-gray-900 opacity-30"></div>
+        <div className="absolute inset-0 bg-white opacity-30"></div>
 
-        <div className="relative z-10 container px-6 py-28 mx-auto ">
+        <div className="relative z-10 container px-6 py-16 mx-auto ">
           <div className=" text-center text-white mb-14">
-            <h2 className="text-6xl font-josefin font-bold">Contact Us</h2>
+            <h2 className="text-5xl font-josefin font-bold">Contact Us</h2>
             <p className="py-3 text-lg font-medium mb-6">
               We’d love to hear from you. Please fill out this form or shoot us
               an email.
@@ -70,7 +70,7 @@ const ContactSections = () => {
                     <input
                       type="text"
                       placeholder="John "
-                      className="block w-full px-5 py-2.5 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-lg dark:placeholder-gray-600  focus:outline-none focus:ring focus:ring-opacity-40"
+                      className="block w-full px-5 py-2.5 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-lg focus:outline-none focus:ring focus:ring-opacity-40"
                     />
                   </div>
 
@@ -107,7 +107,7 @@ const ContactSections = () => {
                   ></textarea>
                 </div>
 
-                <button className="w-full px-6 py-3 mt-4 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-500 rounded-lg hover:bg-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-50">
+                <button className="w-full px-6 py-3 mt-4 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-gradient-to-r from-[#7ed56f] to-[#28b485] rounded-lg  ">
                   Send message
                 </button>
               </form>
