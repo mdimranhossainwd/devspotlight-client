@@ -1,4 +1,5 @@
 import Carousel from "../components/Carousel";
+import ContactSections from "../components/ContactSections";
 import Brand from "../components/extra/Brand";
 import Newsletter from "../components/extra/Newsletter";
 import FeatureSection from "../components/FeatureSection";
@@ -10,6 +11,7 @@ const HomePages = () => {
       <FeatureSection />
       <TreadSections />
       <Newsletter />
+      <ContactSections />
       <Brand />
     </>
   );
