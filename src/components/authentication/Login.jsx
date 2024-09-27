@@ -1,13 +1,12 @@
-import { useContext } from "react";
 import { Helmet } from "react-helmet-async";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { Link, useNavigate } from "react-router-dom";
-import { AuthContext } from "../../provider/AuthProvider";
+import useAuth from "../../hooks/useAuth";
 
 const Login = () => {
   const navigate = useNavigate();
-  const { signInWithGoogle, signIn } = useContext(AuthContext);
+  const { signInWithGoogle, signIn } = useAuth();
 
   const { register, handleSubmit } = useForm();
 

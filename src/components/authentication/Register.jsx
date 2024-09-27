@@ -1,15 +1,14 @@
-import { useContext } from "react";
 import { Helmet } from "react-helmet-async";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
-import { AuthContext } from "../../provider/AuthProvider";
+import useAuth from "../../hooks/useAuth";
 
 const Register = () => {
   const { register, handleSubmit } = useForm();
   const navigate = useNavigate();
   const { signInWithGoogle, user, createUser, setUser, updateUserProfile } =
-    useContext(AuthContext);
+    useAuth();
 
   // CREATE USER FUNCTIONS
   const handleSignUp = async (data) => {
