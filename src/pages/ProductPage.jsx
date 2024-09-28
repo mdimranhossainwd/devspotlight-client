@@ -4,6 +4,7 @@ import toast from "react-hot-toast";
 import { useLoaderData, useNavigate } from "react-router-dom";
 import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
+import Reviews from "../components/review/Reviews";
 import TopHeading from "../components/shared/TopHeading";
 import useAuth from "../hooks/useAuth";
 const ProductPage = () => {
@@ -22,6 +23,7 @@ const ProductPage = () => {
   const [rating, setRating] = useState(0);
   const [submitted, setSubmitted] = useState(false);
 
+  // Review Data Post on DB function
   const handleSubmit = async (e) => {
     e.preventDefault();
     const form = e.target;
@@ -223,6 +225,9 @@ const ProductPage = () => {
             </div>
           </TabPanel>
         </Tabs>
+      </div>
+      <div className="">
+        <Reviews />
       </div>
     </div>
   );
