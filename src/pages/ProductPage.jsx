@@ -1,4 +1,6 @@
 import { useLoaderData } from "react-router-dom";
+import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
+import "react-tabs/style/react-tabs.css";
 import TopHeading from "../components/shared/TopHeading";
 
 const ProductPage = () => {
@@ -66,6 +68,33 @@ const ProductPage = () => {
             </div>
           </div>
         </div>
+      </div>
+
+      <div className="">
+        <Tabs className="text-center space-y-3 max-w-6xl mx-auto">
+          <TabList>
+            <Tab>Description</Tab>
+            <Tab>Review</Tab>
+          </TabList>
+
+          <TabPanel>
+            <p className="text-md py-4 text-gray-500 mt-2">
+              Discover [Product Name], a cutting-edge tool designed to help
+              developers streamline their workflow and boost productivity. From
+              seamless integrations to intuitive features, see how this product
+              can take your development process to the next level Learn from the
+              best. [Developer Name] shares their tips, tricks, and lessons
+              learned while building [Product Name], providing valuable insights
+              for aspiring developers. Unlock the potential of [Product Name]
+              with features like [Feature 1], [Feature 2], and [Feature 3].
+              Learn more about how it stands out from the crowd and what makes
+              it a must-have for developers.
+            </p>
+          </TabPanel>
+          <TabPanel>
+            <h2>Any content 2</h2>
+          </TabPanel>
+        </Tabs>
       </div>
     </div>
   );
