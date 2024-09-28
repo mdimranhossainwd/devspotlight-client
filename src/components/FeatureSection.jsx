@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import Card from "./Card";
 import TopHeading from "./shared/TopHeading";
 
-const FeatureSection = () => {
+const FeatureSection = ({ type }) => {
   const [card, setCard] = useState([]);
 
   useEffect(() => {
@@ -24,11 +24,9 @@ const FeatureSection = () => {
       <div className="container mx-auto">
         <div className="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-4">
           {card?.map((item) => (
-            <Card item={item} key={item?._id} />
+            <Card item={item} key={item?._id} type="features" />
           ))}
         </div>
-
-        {/* <Card /> */}
       </div>
     </div>
   );

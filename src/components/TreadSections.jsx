@@ -22,7 +22,7 @@ const TreadSections = () => {
       <div className="container mx-auto">
         <div className="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-4">
           {card?.map((item) => (
-            <Card item={item} key={item?._id} />
+            <Card item={item} key={item?._id} type="trending" />
           ))}
         </div>
       </div>

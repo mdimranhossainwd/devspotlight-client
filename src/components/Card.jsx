@@ -1,6 +1,7 @@
 import { IoMdArrowDropup } from "react-icons/io";
+import { Link } from "react-router-dom";
 
-const Card = ({ item }) => {
+const Card = ({ item, type }) => {
   const {
     _id,
     product_name,
@@ -22,14 +23,14 @@ const Card = ({ item }) => {
 
       <div className="p-6">
         <div className="flex items-center justify-between">
-          <a
-            href="#"
+          <Link
+            to={`/${type}/${_id}`}
             className="block mt-2 text-lg font-semibold text-black transition-colors duration-300 font-josefin transform hover:text-gray-600 hover:underline"
             tabIndex="0"
             role="link"
           >
             {product_name}
-          </a>
+          </Link>
           <span className="text-xs font-medium underline text-blue-600 lowercase dark:text-blue-400">
             {[product_tags[0]]}
           </span>
