@@ -1,12 +1,13 @@
 import axios from "axios";
 import { useState } from "react";
 import toast from "react-hot-toast";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import TopHeading from "../components/shared/TopHeading";
 import useAuth from "../hooks/useAuth";
 const ProductPage = () => {
+  const navigate = useNavigate();
   const productInfo = useLoaderData();
   const {
     _id: productId,
@@ -197,7 +198,7 @@ const ProductPage = () => {
 
                 <button
                   type="submit"
-                  className="w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                  className="w-full bg-gradient-to-r from-[#7ed56f] to-[#28b485] text-white font-bold py-2 px-4 rounded"
                 >
                   Submit
                 </button>
