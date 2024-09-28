@@ -1,4 +1,6 @@
+import axios from "axios";
 import { useState } from "react";
+import toast from "react-hot-toast";
 import { useLoaderData } from "react-router-dom";
 import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
@@ -7,7 +9,7 @@ import useAuth from "../hooks/useAuth";
 const ProductPage = () => {
   const productInfo = useLoaderData();
   const {
-    _id,
+    _id: productId,
     product_name,
     product_img,
     product_tags,
@@ -17,14 +19,27 @@ const ProductPage = () => {
   } = productInfo || {};
   const { user } = useAuth();
   const [rating, setRating] = useState(0);
+  const [submitted, setSubmitted] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const form = e.target;
     const name = form.name.value;
     const img = form.image.value;
     const review = form.review.value;
-    console.log({ name, img, review });
+    const formData = { name, img, review, rating, productId };
+
+    try {
+      const { data } = await axios.post(
+        "http://localhost:5000/api/v1/reviews",
+        formData
+      );
+      toast.success(`${product_name} has Review Successfully`);
+      setSubmitted(true);
+      form.reset();
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return (
@@ -174,9 +189,11 @@ const ProductPage = () => {
                   ></textarea>
                 </div>
 
-                <p className="text-green-500 mb-4">
-                  Thank you for submitting your review!
-                </p>
+                {submitted && (
+                  <p className="text-green-500 mb-4">
+                    Thank you for submitting your review!
+                  </p>
+                )}
 
                 <button
                   type="submit"
