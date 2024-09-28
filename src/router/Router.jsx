@@ -5,6 +5,7 @@ import MainLayout from "../layout/MainLayout";
 import ErrorPage from "../pages/ErrorPage";
 import HomePages from "../pages/HomePages";
 import ProductPage from "../pages/ProductPage";
+import PrivateRouter from "./PrivateRouter";
 
 const router = createBrowserRouter([
   {
@@ -18,7 +19,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/:type/:id",
-        element: <ProductPage />,
+        element: (
+          <PrivateRouter>
+            <ProductPage />
+          </PrivateRouter>
+        ),
         loader: ({ params }) =>
           fetch(`http://localhost:5000/api/v1/${params.type}/${params.id}`),
       },
