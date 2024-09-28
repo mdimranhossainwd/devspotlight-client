@@ -1,8 +1,9 @@
+import { useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import TopHeading from "../components/shared/TopHeading";
-
+import useAuth from "../hooks/useAuth";
 const ProductPage = () => {
   const productInfo = useLoaderData();
   const {
@@ -14,6 +15,17 @@ const ProductPage = () => {
     product_totalcount,
     product_links,
   } = productInfo || {};
+  const { user } = useAuth();
+  const [rating, setRating] = useState(0);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const name = form.name.value;
+    const img = form.image.value;
+    const review = form.review.value;
+    console.log({ name, img, review });
+  };
 
   return (
     <div className="container mx-auto py-12">
@@ -92,7 +104,88 @@ const ProductPage = () => {
             </p>
           </TabPanel>
           <TabPanel>
-            <h2>Any content 2</h2>
+            <div className="max-w-xl mx-auto p-6 bg-white rounded-lg shadow-md">
+              <div className="space-y-2">
+                <h2 className="text-2xl font-bold font-josefin">
+                  Be the First to Review {product_name}
+                </h2>
+                <p className="text-md text-gray-500 pb-6">
+                  Your email address will not be published. Required fields are
+                  marked *
+                </p>
+              </div>
+              <form onSubmit={handleSubmit}>
+                <div className="mb-8">
+                  <label className="block text-gray-700 font-bold mb-2">
+                    Your rating *
+                  </label>
+                  <div className="flex items-center justify-center space-x-1">
+                    {[1, 2, 3, 4, 5].map((star) => (
+                      <button
+                        type="button"
+                        key={star}
+                        className={`text-2xl ${
+                          star <= rating ? "text-yellow-400" : "text-gray-300"
+                        }`}
+                        onClick={() => setRating(star)}
+                      >
+                        ★
+                      </button>
+                    ))}
+                  </div>
+                </div>
+                <div className="mb-4">
+                  <label className="block text-gray-700 font-bold mb-2">
+                    Name *
+                  </label>
+                  <input
+                    type="text"
+                    className="w-full p-2 border rounded-lg border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    defaultValue={user?.displayName}
+                    disabled
+                    name="name"
+                    required
+                  />
+                </div>
+
+                <div className="mb-4">
+                  <label className="block text-gray-700 font-bold mb-2">
+                    Image *
+                  </label>
+                  <input
+                    type="img"
+                    className="w-full p-2 border rounded-lg border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    defaultValue={user?.photoURL}
+                    disabled
+                    name="image"
+                    required
+                  />
+                </div>
+
+                <div className="mb-4">
+                  <label className="block text-gray-700 font-bold mb-2">
+                    Your review *
+                  </label>
+                  <textarea
+                    className="w-full p-2 border rounded-lg border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    rows="4"
+                    name="review"
+                    required
+                  ></textarea>
+                </div>
+
+                <p className="text-green-500 mb-4">
+                  Thank you for submitting your review!
+                </p>
+
+                <button
+                  type="submit"
+                  className="w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                >
+                  Submit
+                </button>
+              </form>
+            </div>
           </TabPanel>
         </Tabs>
       </div>
