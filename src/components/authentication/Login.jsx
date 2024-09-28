@@ -1,15 +1,15 @@
 import { Helmet } from "react-helmet-async";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 
 const Login = () => {
   const navigate = useNavigate();
   const { signInWithGoogle, signIn } = useAuth();
-
+  const location = useLocation();
   const { register, handleSubmit } = useForm();
-
+  const from = location.state || "/";
   // LOGIN WITH FUNCTIONALITY
   const handleLogin = async (data) => {
     const { email, password } = data;
@@ -17,7 +17,7 @@ const Login = () => {
       const result = await signIn(email, password);
       console.log(result);
       toast.success("SignIn Successfully");
-      navigate("/");
+      navigate(from, { replace: true });
     } catch (err) {
       console.log(err);
     }

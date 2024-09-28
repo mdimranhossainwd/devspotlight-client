@@ -107,16 +107,33 @@ const ProductPage = () => {
 
           <TabPanel>
             <p className="text-md py-4 text-gray-500 mt-2">
-              Discover [Product Name], a cutting-edge tool designed to help
-              developers streamline their workflow and boost productivity. From
-              seamless integrations to intuitive features, see how this product
-              can take your development process to the next level Learn from the
-              best. [Developer Name] shares their tips, tricks, and lessons
-              learned while building [Product Name], providing valuable insights
-              for aspiring developers. Unlock the potential of [Product Name]
-              with features like [Feature 1], [Feature 2], and [Feature 3].
-              Learn more about how it stands out from the crowd and what makes
-              it a must-have for developers.
+              Conveniently engage client-centric technology through end-to-end
+              supply chains. Phosfluorescently morph distributed human capital
+              after goal-oriented convergence. Energistically morph global
+              action items without pandemic benefits. Compellingly
+              disintermediate interactive leadership whereas high standards in
+              growth strategies. Monotonectally e-enable end-to-end data for
+              client-based sources. Synergistically reinvent maintainable total
+              linkage vis-a-vis top-line scenarios. Compellingly maintain state
+              of the art solutions vis-a-vis cross-media quality vectors.
+              Efficiently whiteboard extensive e-tailers after intermandated
+              products. Proactively brand best-of-breed bandwidth through
+              technically sound ROI. Conveniently transition viral leadership
+              skills whereas diverse process improvements. Rapidiously
+              reintermediate real-time initiatives rather than distributed
+              schemas. Dramatically incentivize client-focused portals for
+              backend results. Professionally architect extensive mindshare with
+              high-payoff relationships. Rapidiously transition world-class
+              action items vis-a-vis extensible experiences. Phosfluorescently
+              exploit client-centered infomediaries via holistic mindshare.
+              Dramatically synergize interactive ideas via enabled experiences.
+              Compellingly provide access to revolutionary initiatives rather
+              than backward-compatible intellectual capital. Seamlessly expedite
+              synergistic potentialities before leveraged portals.
+              Enthusiastically facilitate customer directed collaboration and
+              idea-sharing after technically sound information. Holisticly
+              create superior markets before resource sucking action items.
+              Holisticly engage flexible resources.
             </p>
           </TabPanel>
           <TabPanel>

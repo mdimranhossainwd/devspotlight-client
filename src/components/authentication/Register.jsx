@@ -1,12 +1,14 @@
 import { Helmet } from "react-helmet-async";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 
 const Register = () => {
   const { register, handleSubmit } = useForm();
   const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state || "/";
   const { signInWithGoogle, user, createUser, setUser, updateUserProfile } =
     useAuth();
 
@@ -19,7 +21,7 @@ const Register = () => {
       const result = await createUser(email, password);
       await updateUserProfile(name, photo);
       setUser({ ...result?.user, photoURL: photo, displayName: name });
-      navigate("/");
+      navigate(from, { replace: true });
       toast.success("SignUp Successfully ");
     } catch (err) {
       console.log(err);
@@ -31,7 +33,7 @@ const Register = () => {
     try {
       const result = await signInWithGoogle();
       console.log(result);
-      navigate("/");
+      navigate(from, { replace: true });
     } catch (err) {
       console.log(err);
     }
