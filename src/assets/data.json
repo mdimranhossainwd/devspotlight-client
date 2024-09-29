@@ -1,0 +1,38 @@
+[
+  {
+    "product_name": "VS Code",
+    "product_img": "https://i.ibb.co/zR2LzzR/Uz0-PH-r8n-Gx8g-U9-UCHURirqrt-Xg-Lhtq-Ji-NDVg-T03jtw.webp",
+    "product_tags": ["Code Editor", "Microsoft", "Developer Tool"],
+    "product_description": "A lightweight, powerful source code editor.",
+    "product_totalcount": 12,
+    "product_links": "https://code.visualstudio.com/",
+    "timestamp": "12:30"
+  },
+  {
+    "product_name": "AWS",
+    "product_img": "https://i.ibb.co/RHbVgbw/aws-logo-smile-1200x630.png",
+    "product_tags": ["Cloud", "Hosting", "Web Services"],
+    "product_description": "Cloud platform offering a variety of computing services.",
+    "product_totalcount": 11,
+    "product_links": "https://aws.amazon.com/",
+    "timestamp": "10:30"
+  },
+  {
+    "product_name": "GitHub",
+    "product_img": "https://i.ibb.co/N1NfQdW/what-is-github-1-1-1024x512.png",
+    "product_tags": ["Version Control", "Collaboration", "Developer Tool"],
+    "product_description": "A platform for hosting and reviewing code projects.",
+    "product_totalcount": 10,
+    "product_links": "https://github.com/",
+    "timestamp": "11:30"
+  },
+  {
+    "product_name": "Postman",
+    "product_img": "https://i.ibb.co.com/QMHTzwK/postman.png",
+    "product_tags": ["API", "Testing", "Development"],
+    "product_description": "A platform to develop and test APIs quickly..",
+    "product_totalcount": 9,
+    "product_links": "https://postman.com/",
+    "timestamp": "12:30"
+  }
+]

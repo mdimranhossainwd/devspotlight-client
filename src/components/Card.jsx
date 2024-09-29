@@ -10,6 +10,7 @@ const Card = ({ item, type }) => {
     product_description,
     product_totalcount,
     product_links,
+    timestamp,
   } = item || {};
   return (
     <div className="max-w-md overflow-hidden shadow-md ">
@@ -31,6 +32,7 @@ const Card = ({ item, type }) => {
           >
             {product_name}
           </Link>
+          <p className="font-semibold ">{timestamp}</p>
           <span className="text-xs font-medium underline text-blue-600 lowercase dark:text-blue-400">
             {[product_tags[0]]}
           </span>

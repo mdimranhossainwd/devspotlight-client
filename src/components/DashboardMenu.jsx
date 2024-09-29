@@ -19,7 +19,7 @@ const DashboardMenu = () => {
 
       <NavLink
         className={({ isActive }) => (isActive ? "text-[#28b485]" : "")}
-        to="profile"
+        to="product"
       >
         My Products
       </NavLink>
