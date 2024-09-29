@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Helmet } from "react-helmet-async";
 import toast from "react-hot-toast";
 import { useLoaderData, useNavigate } from "react-router-dom";
 import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
@@ -44,6 +45,9 @@ const ProductPage = () => {
 
   return (
     <div className="container mx-auto py-12">
+      <Helmet>
+        <title>devspotlight || Product Details</title>
+      </Helmet>
       <TopHeading
         heading="Product Details"
         text="Explore our top picks for the most innovative and helpful developer tools available today. These tools are designed to streamline workflows, enhance collaboration, and boost productivity, enabling developers to build high-quality software more efficiently and effectively than ever before."
@@ -87,10 +91,10 @@ const ProductPage = () => {
             {/* Add to Cart Button */}
             <div className="flex items-center gap-6">
               <button className="mt-4 w-full bg-gradient-to-r from-[#7ed56f] to-[#28b485] text-white py-2 px-4 rounded-md hover:bg-orange-500 transition-colors">
-                Add to Cart
+                Upvoted
               </button>
-              <button className="mt-4 w-full bg-gradient-to-r from-[#7ed56f] to-[#28b485] text-white py-2 px-4 rounded-md hover:bg-orange-500 transition-colors">
-                Add to Cart
+              <button className="mt-4 w-full text-gray-500 bg-gray-200 py-2 px-4 rounded-md hover:bg-gradient-to-r hover:from-[#28b485] hover:to-[#7ed56f] hover:text-white transition-all duration-500 ease-in-out">
+                Report
               </button>
             </div>
           </div>
