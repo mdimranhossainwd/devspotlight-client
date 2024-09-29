@@ -1,4 +1,3 @@
-import axios from "axios";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import { useLoaderData, useNavigate } from "react-router-dom";
@@ -7,6 +6,7 @@ import "react-tabs/style/react-tabs.css";
 import Reviews from "../components/review/Reviews";
 import TopHeading from "../components/shared/TopHeading";
 import useAuth from "../hooks/useAuth";
+import useAxios from "../hooks/useAxios";
 const ProductPage = () => {
   const navigate = useNavigate();
   const productInfo = useLoaderData();
@@ -22,7 +22,7 @@ const ProductPage = () => {
   const { user } = useAuth();
   const [rating, setRating] = useState(0);
   const [submitted, setSubmitted] = useState(false);
-
+  const axios = useAxios();
   // Review Data Post on DB function
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -33,10 +33,7 @@ const ProductPage = () => {
     const formData = { name, img, review, rating, productId };
 
     try {
-      const { data } = await axios.post(
-        "http://localhost:5000/api/v1/reviews",
-        formData
-      );
+      const { data } = await axios.post("/reviews", formData);
       toast.success(`${product_name} has Review Successfully`);
       setSubmitted(true);
       form.reset();

@@ -1,14 +1,15 @@
-import axios from "axios";
 import { useEffect, useState } from "react";
+import useAxios from "../../hooks/useAxios";
 import ReviewCard from "../ReviewCard";
 import TopHeading from "../shared/TopHeading";
 
 const Reviews = () => {
   const [reviews, setReviews] = useState([]);
+  const axios = useAxios();
 
   useEffect(() => {
     const getData = async () => {
-      const { data } = await axios("http://localhost:5000/api/v1/reviews");
+      const { data } = await axios("/reviews");
       setReviews(data);
     };
     getData();

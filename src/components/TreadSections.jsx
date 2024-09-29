@@ -1,14 +1,15 @@
-import axios from "axios";
 import { useEffect, useState } from "react";
+import useAxios from "../hooks/useAxios";
 import Card from "./Card";
 import TopHeading from "./shared/TopHeading";
 
 const TreadSections = () => {
   const [card, setCard] = useState([]);
+  const axios = useAxios();
 
   useEffect(() => {
     const getData = async () => {
-      const { data } = await axios("http://localhost:5000/api/v1/trending");
+      const { data } = await axios("/trending");
       setCard(data);
     };
     getData();
