@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { IoMdArrowDropup } from "react-icons/io";
 import { Link } from "react-router-dom";
 
@@ -12,6 +13,17 @@ const Card = ({ item, type }) => {
     product_links,
     timestamp,
   } = item || {};
+
+  // Add state for the upvote count
+  const [voteCount, setVoteCount] = useState(product_totalcount);
+  const [hasUpvoted, setHasUpvoted] = useState(false);
+
+  const handleUpvote = () => {
+    if (!hasUpvoted) {
+      setVoteCount(voteCount + 1); // Increase vote count by 1
+      setHasUpvoted(true); // Mark as upvoted
+    }
+  };
   return (
     <div className="max-w-md overflow-hidden shadow-md ">
       <img
@@ -43,10 +55,10 @@ const Card = ({ item, type }) => {
 
         <div className="mt-4">
           <div className="text-lg font-semibold  w-12 gap-3 text-center flex items-center">
-            <div className="text-3xl text-[#7ed56f]">
+            <div onClick={handleUpvote} className="text-3xl text-[#7ed56f]">
               <IoMdArrowDropup />
             </div>
-            <span>{product_totalcount}</span>
+            <span>{voteCount}</span>
           </div>
         </div>
       </div>

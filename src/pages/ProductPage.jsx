@@ -20,6 +20,15 @@ const ProductPage = () => {
     product_totalcount,
     product_links,
   } = productInfo || {};
+  const [voteCount, setVoteCount] = useState(product_totalcount);
+  const [hasUpvoted, setHasUpvoted] = useState(false);
+
+  const handleUpvote = () => {
+    if (!hasUpvoted) {
+      setVoteCount(voteCount + 1); // Increase vote count by 1
+      setHasUpvoted(true); // Mark as upvoted
+    }
+  };
   const { user } = useAuth();
   const [rating, setRating] = useState(0);
   const [submitted, setSubmitted] = useState(false);
@@ -70,7 +79,7 @@ const ProductPage = () => {
             </h1>
             <p className="text-gray-500 mt-1">
               <span className="font-medium text-black">TotalCount: </span>
-              {product_totalcount}
+              {voteCount}
             </p>
 
             {/* Payment Options */}
@@ -90,7 +99,10 @@ const ProductPage = () => {
 
             {/* Add to Cart Button */}
             <div className="flex items-center gap-6">
-              <button className="mt-4 w-full bg-gradient-to-r from-[#7ed56f] to-[#28b485] text-white py-2 px-4 rounded-md hover:bg-orange-500 transition-colors">
+              <button
+                onClick={handleUpvote}
+                className="mt-4 w-full bg-gradient-to-r from-[#7ed56f] to-[#28b485] text-white py-2 px-4 rounded-md hover:bg-orange-500 transition-colors"
+              >
                 Upvoted
               </button>
               <button className="mt-4 w-full text-gray-500 bg-gray-200 py-2 px-4 rounded-md hover:bg-gradient-to-r hover:from-[#28b485] hover:to-[#7ed56f] hover:text-white transition-all duration-500 ease-in-out">
