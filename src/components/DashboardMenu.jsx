@@ -1,6 +1,10 @@
 import { NavLink } from "react-router-dom";
+import useAuth from "../hooks/useAuth";
 
 const DashboardMenu = () => {
+  const { user } = useAuth();
+  console.log(user);
+
   const menu = (
     <>
       <NavLink
@@ -30,11 +34,9 @@ const DashboardMenu = () => {
     <div>
       <aside className="md:w-64 min-h-screen bg-gray-100 p-4">
         <div className="flex items-center mb-6">
-          <div className="w-12 h-12 bg-gray-300 rounded-full mr-3"></div>
-          <div>
-            <h2 className="text-lg font-semibold">Kevin Dukkon</h2>
-            <p className="text-sm text-gray-500">hey@kevdu.co</p>
-          </div>
+          <h3 className="text-2xl font-josefin mt-5 text-[#28b485] font-bold ">
+            DevSpotLight
+          </h3>
         </div>
         <div className="divider"></div>
 
