@@ -4,7 +4,7 @@ import DashboardMenu from "../components/DashboardMenu";
 const DashboardLayout = () => {
   return (
     <div className="lg:flex">
-      <div>
+      <div className="min-h-full bg-gray-100">
         <DashboardMenu />
       </div>
       <div className="md:flex-1">

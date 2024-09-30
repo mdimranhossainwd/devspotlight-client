@@ -4,6 +4,7 @@ import Register from "../components/authentication/Register";
 import Profile from "../components/shared/Profile";
 import DashboardLayout from "../layout/DashboardLayout";
 import MainLayout from "../layout/MainLayout";
+import AddProductPage from "../pages/AddProductPage";
 import ErrorPage from "../pages/ErrorPage";
 import HomePages from "../pages/HomePages";
 import ProductPage from "../pages/ProductPage";
@@ -39,6 +40,10 @@ const router = createBrowserRouter([
       {
         path: "profile",
         element: <Profile />,
+      },
+      {
+        path: "add-product",
+        element: <AddProductPage />,
       },
     ],
   },

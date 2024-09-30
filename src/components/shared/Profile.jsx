@@ -1,9 +1,13 @@
+import { Helmet } from "react-helmet-async";
 import useAuth from "../../hooks/useAuth";
 
 const Profile = () => {
   const { user } = useAuth();
   return (
     <div className=" min-h-screen p-6 flex justify-center">
+      <Helmet>
+        <title>DevSpotLight || My-Profile</title>
+      </Helmet>
       <div className="bg-white shadow-md rounded-lg max-w-4xl w-full">
         {/* Header */}
         <div

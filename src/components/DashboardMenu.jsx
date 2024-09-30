@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet-async";
 import { NavLink } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 
@@ -32,6 +33,9 @@ const DashboardMenu = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>DevSpotLight || Dashboard Page</title>
+      </Helmet>
       <aside className="md:w-64 min-h-screen bg-gray-100 p-4">
         <div className="flex items-center mb-6">
           <h3 className="text-2xl font-josefin mt-5 text-[#28b485] font-bold ">
