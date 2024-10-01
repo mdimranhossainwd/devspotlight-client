@@ -1,4 +1,8 @@
+import useAuth from "../hooks/useAuth";
 const AddProductPage = () => {
+  const { user } = useAuth();
+  console.log(user);
+
   return (
     <div className="max-w-3xl mx-auto my-6 p-6 bg-white shadow-md rounded-lg">
       <h2 className="text-2xl font-josefin text-center font-bold mb-6">
@@ -53,21 +57,19 @@ const AddProductPage = () => {
           </h3>
           <div className="grid grid-cols-3 gap-4 mt-2">
             <input
-              type="text"
-              value="info"
+              defaultValue={user?.displayName}
               disabled
-              className="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none sm:text-sm"
+              className=" w-full px-3 border border-gray-300 rounded-md shadow-sm focus:outline-none sm:text-sm"
             />
             <input
-              type="text"
-              value="email"
+              defaultValue={user?.email}
               disabled
-              className="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none sm:text-sm"
+              className=" w-full px-3 border border-gray-300 rounded-md shadow-sm focus:outline-none sm:text-sm"
             />
             <img
-              src="img"
+              src={user?.photoURL}
               alt="Owner"
-              className="w-16 h-16 rounded-full border border-gray-300"
+              className="w-16 h-16 object-cover rounded-full border border-gray-300"
             />
           </div>
         </div>

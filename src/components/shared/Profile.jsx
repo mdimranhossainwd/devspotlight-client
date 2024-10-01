@@ -45,7 +45,9 @@ const Profile = () => {
             </div>
             <div>
               <p className="text-gray-700 font-semibold">Subscription Type</p>
-              <p className="text-gray-500">Basic User</p>
+              <button className="bg-gradient-to-r font-semibold from-[#7ed56f] to-[#28b485] my-4 text-white px-6 py-3 rounded-md  transition duration-300">
+                Subscribe for $10
+              </button>
             </div>
             <div>
               <p className="text-gray-700 font-semibold">Time Zone</p>
