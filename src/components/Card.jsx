@@ -55,7 +55,10 @@ const Card = ({ item, type }) => {
 
         <div className="mt-4">
           <div className="text-lg font-semibold  w-12 gap-3 text-center flex items-center">
-            <div onClick={handleUpvote} className="text-3xl text-[#7ed56f]">
+            <div
+              onClick={handleUpvote}
+              className="text-3xl text-gray-200 cursor-pointer border p-1 rounded-md"
+            >
               <IoMdArrowDropup />
             </div>
             <span>{voteCount}</span>
