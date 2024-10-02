@@ -1,18 +1,52 @@
 import { useState } from "react";
+import toast from "react-hot-toast";
 import { TagsInput } from "react-tag-input-component";
 import useAuth from "../hooks/useAuth";
+import useAxios from "../hooks/useAxios";
 
 const AddProductPage = () => {
   const { user } = useAuth();
-  console.log(user);
   const [selected, setSelected] = useState([]);
+  const axios = useAxios();
+
+  const addProduct = async (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const name = form.name.value;
+    const img = form.img.value;
+    const descriptions = form.descriptions.value;
+    const ownerEmail = form.ownerEmail.value;
+    const ownerName = form.ownerName.value;
+    const link = form.link.value;
+    const tags = selected;
+    const addProductData = {
+      name,
+      img,
+      descriptions,
+      ownerEmail,
+      ownerName,
+      link,
+      tags,
+      photo: user?.photoURL,
+    };
+
+    try {
+      const { data } = await axios.post("/add-product", addProductData);
+      if (data.acknowledged) {
+        toast.success("Wow...Successfully product Added");
+        form.reset();
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   return (
     <div className="max-w-3xl mx-auto my-6 p-6 bg-white shadow-md rounded-lg">
       <h2 className="text-2xl font-josefin text-center font-bold mb-6">
         Add a Product
       </h2>
-      <form className="space-y-6">
+      <form onSubmit={addProduct} className="space-y-6">
         {/* Product Name */}
         <div>
           <label className="block text-sm font-medium text-gray-700">
@@ -34,7 +68,7 @@ const AddProductPage = () => {
           <input
             type="text"
             placeholder="Product Image Link ..."
-            name="img"
+            id="img"
             required
             className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[#7ed56f] focus:border-[#7ed56f] sm:text-sm"
           />
@@ -48,7 +82,7 @@ const AddProductPage = () => {
           <textarea
             type="text"
             placeholder="Product Descriptions ..."
-            name="descriptions"
+            id="descriptions"
             required
             className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[#7ed56f] focus:border-[#7ed56f] sm:text-sm"
           />
@@ -62,17 +96,20 @@ const AddProductPage = () => {
           <div className="grid grid-cols-3 gap-4 mt-2">
             <input
               defaultValue={user?.displayName}
+              id="ownerName"
               disabled
               className=" w-full px-3 border border-gray-300 rounded-md shadow-sm focus:outline-none sm:text-sm"
             />
             <input
               defaultValue={user?.email}
+              id="ownerEmail"
               disabled
               className=" w-full px-3 border border-gray-300 rounded-md shadow-sm focus:outline-none sm:text-sm"
             />
             <img
               src={user?.photoURL}
               alt="Owner"
+              id="ownerImg"
               className="w-16 h-16 object-cover rounded-full border border-gray-300"
             />
           </div>
@@ -88,6 +125,7 @@ const AddProductPage = () => {
             value={selected}
             onChange={setSelected}
             name="tags"
+            id="tags"
             placeHolder="Enter Tags"
             className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[#7ed56f] focus:border-[#7ed56f] sm:text-sm"
           />
@@ -100,6 +138,7 @@ const AddProductPage = () => {
           </label>
           <input
             type="text"
+            id="link"
             className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[#7ed56f] focus:border-[#7ed56f] sm:text-sm"
             placeholder="e.g., https://product.com"
           />
