@@ -7,6 +7,7 @@ import MainLayout from "../layout/MainLayout";
 import AddProductPage from "../pages/AddProductPage";
 import ErrorPage from "../pages/ErrorPage";
 import HomePages from "../pages/HomePages";
+import MyProductPage from "../pages/MyProductPage";
 import ProductPage from "../pages/ProductPage";
 import PrivateRouter from "./PrivateRouter";
 
@@ -48,6 +49,10 @@ const router = createBrowserRouter([
       {
         path: "add-product",
         element: <AddProductPage />,
+      },
+      {
+        path: "my-product",
+        element: <MyProductPage />,
       },
     ],
   },

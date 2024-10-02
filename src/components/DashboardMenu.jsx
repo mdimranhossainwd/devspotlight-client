@@ -24,7 +24,7 @@ const DashboardMenu = () => {
 
       <NavLink
         className={({ isActive }) => (isActive ? "text-[#28b485]" : "")}
-        to="product"
+        to="my-product"
       >
         My Products
       </NavLink>

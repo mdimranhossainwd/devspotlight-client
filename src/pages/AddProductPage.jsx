@@ -1,5 +1,6 @@
 import { useState } from "react";
 import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 import { TagsInput } from "react-tag-input-component";
 import useAuth from "../hooks/useAuth";
 import useAxios from "../hooks/useAxios";
@@ -7,8 +8,13 @@ import useAxios from "../hooks/useAxios";
 const AddProductPage = () => {
   const { user } = useAuth();
   const [selected, setSelected] = useState([]);
-  const axios = useAxios();
+  const [date, setDate] = useState(new Date());
+  console.log(date);
 
+  const axios = useAxios();
+  const navigate = useNavigate();
+
+  // Adda a Product saved on DB
   const addProduct = async (e) => {
     e.preventDefault();
     const form = e.target;
@@ -19,6 +25,10 @@ const AddProductPage = () => {
     const ownerName = form.ownerName.value;
     const link = form.link.value;
     const tags = selected;
+    const timestamp = date.toLocaleTimeString([], {
+      hour: "2-digit",
+      minute: "2-digit",
+    });
     const addProductData = {
       name,
       img,
@@ -28,14 +38,14 @@ const AddProductPage = () => {
       link,
       tags,
       photo: user?.photoURL,
+      timestamp,
     };
 
     try {
-      const { data } = await axios.post("/add-product", addProductData);
-      if (data.acknowledged) {
-        toast.success("Wow...Successfully product Added");
-        form.reset();
-      }
+      const { data } = await axios.post("/add-products", addProductData);
+      console.log(data);
+      toast.success("Add New Product");
+      navigate("/dashboard/my-product");
     } catch (err) {
       console.log(err);
     }
@@ -145,14 +155,13 @@ const AddProductPage = () => {
         </div>
 
         {/* Submit Button */}
-        <div>
-          <button
-            type="submit"
-            className="w-full py-2 px-4 bg-gradient-to-r from-[#7ed56f] to-[#28b485] text-white font-medium rounded-md hover:"
-          >
-            Submit
-          </button>
-        </div>
+
+        <button
+          type="submit"
+          className="w-full py-2 px-4 bg-gradient-to-r from-[#7ed56f] to-[#28b485] text-white font-medium rounded-md hover:"
+        >
+          Submit
+        </button>
       </form>
     </div>
   );
