@@ -21,7 +21,7 @@ const AddProductPage = () => {
     const name = form.name.value;
     const img = form.img.value;
     const descriptions = form.descriptions.value;
-    const ownerEmail = form.ownerEmail.value;
+    const email = form.email.value;
     const ownerName = form.ownerName.value;
     const link = form.link.value;
     const tags = selected;
@@ -33,7 +33,7 @@ const AddProductPage = () => {
       name,
       img,
       descriptions,
-      ownerEmail,
+      email,
       ownerName,
       link,
       tags,
@@ -112,7 +112,7 @@ const AddProductPage = () => {
             />
             <input
               defaultValue={user?.email}
-              id="ownerEmail"
+              id="email"
               disabled
               className=" w-full px-3 border border-gray-300 rounded-md shadow-sm focus:outline-none sm:text-sm"
             />
