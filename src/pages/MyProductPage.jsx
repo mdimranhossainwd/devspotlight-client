@@ -1,4 +1,7 @@
+
 const MyProductPage = () => {
+
+
   return (
     <div>
       <h2>My Prodcut</h2>
