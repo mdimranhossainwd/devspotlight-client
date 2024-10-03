@@ -24,6 +24,7 @@ const AddProductPage = () => {
     const email = form.email.value;
     const ownerName = form.ownerName.value;
     const link = form.link.value;
+    const status = "pending";
     const tags = selected;
     const timestamp = date.toLocaleTimeString([], {
       hour: "2-digit",
@@ -39,6 +40,7 @@ const AddProductPage = () => {
       tags,
       photo: user?.photoURL,
       timestamp,
+      status,
     };
 
     try {

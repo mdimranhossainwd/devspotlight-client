@@ -9,6 +9,7 @@ import ErrorPage from "../pages/ErrorPage";
 import HomePages from "../pages/HomePages";
 import MyProductPage from "../pages/MyProductPage";
 import ProductPage from "../pages/ProductPage";
+import UpdateProduct from "../pages/UpdateProduct";
 import PrivateRouter from "./PrivateRouter";
 
 const router = createBrowserRouter([
@@ -54,8 +55,13 @@ const router = createBrowserRouter([
         path: "my-product",
         element: <MyProductPage />,
       },
+      {
+        path: "update/:id",
+        element: <UpdateProduct />,
+      },
     ],
   },
+
   {
     path: "/login",
     element: <Login />,
