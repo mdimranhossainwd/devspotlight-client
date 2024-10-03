@@ -1,7 +1,8 @@
+import ProductCard from "../components/shared/ProductCard";
 import useProduct from "../hooks/useProduct";
 
 const MyProductPage = () => {
-  const [product] = useProduct();
+  const [product, refetch] = useProduct();
   console.log(product);
 
   return (
@@ -11,7 +12,11 @@ const MyProductPage = () => {
           Here's My All Products
         </h2>
       </div>
-      <div></div>
+      <div>
+        {product.map((item) => (
+          <ProductCard key={item?._id} refetch={refetch} product={item} />
+        ))}
+      </div>
     </div>
   );
 };
