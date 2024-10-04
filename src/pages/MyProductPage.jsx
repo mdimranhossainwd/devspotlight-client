@@ -1,9 +1,17 @@
 import { NavLink } from "react-router-dom";
+import useAxios from "../hooks/useAxios";
 import useProduct from "../hooks/useProduct";
 
 const MyProductPage = () => {
   const [product, refetch] = useProduct();
   console.log(product);
+  const axios = useAxios();
+
+  const handleDelete = async (id) => {
+    const { data } = await axios.delete(`/add-products/${id}`);
+    refetch();
+    console.log(data);
+  };
 
   return (
     <div className="my-12">
@@ -55,7 +63,7 @@ const MyProductPage = () => {
                     </NavLink>
                   </th>
                   <th>
-                    <button>
+                    <button onClick={() => handleDelete(item?._id)}>
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         className="h-6 w-6"
