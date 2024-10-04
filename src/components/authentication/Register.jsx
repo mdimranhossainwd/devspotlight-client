@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
+import useAxios from "../../hooks/useAxios";
 
 const Register = () => {
   const { register, handleSubmit } = useForm();
@@ -11,7 +12,7 @@ const Register = () => {
   const from = location.state || "/";
   const { signInWithGoogle, user, createUser, setUser, updateUserProfile } =
     useAuth();
-
+  const axios = useAxios();
   // CREATE USER FUNCTIONS
   const handleSignUp = async (data) => {
     const { email, name, password, photo } = data;
@@ -21,8 +22,14 @@ const Register = () => {
       const result = await createUser(email, password);
       await updateUserProfile(name, photo);
       setUser({ ...result?.user, photoURL: photo, displayName: name });
+      await axios.post("/users", {
+        email,
+        name,
+        photo,
+        role: "normal",
+      });
       navigate(from, { replace: true });
-      toast.success("SignUp Successfully ");
+      toast.success("User created Successfully ");
     } catch (err) {
       console.log(err);
     }
