@@ -21,10 +21,10 @@ const MyProductPage = () => {
         </h2>
       </div>
       <div>
-        <div className="px-10">
+        <div className="px-10 mt-10">
           <table className="table w-full">
             {/* head */}
-            <thead className="w-full text-white bg-gradient-to-r from-[#7ed56f] to-[#28b485] text-center rounded-lg">
+            <thead className="w-full text-white bg-gradient-to-r from-[#7ed56f] to-[#28b485] text-center">
               <tr className="text-lg font-pt">
                 <th>Name</th>
                 <th>Vote</th>
@@ -33,14 +33,12 @@ const MyProductPage = () => {
                 <th>Action</th>
               </tr>
             </thead>
-            <tbody className="w-full text-center bg-gray-100">
+            <tbody className="w-full items-center text-center bg-[#f6f2f2]">
               {product?.map((item) => (
                 <tr key={item._id}>
                   <td className="font-medium text-[16px]">{item.name}</td>
                   <td className="font-medium">11</td>
                   <td className="text-md font-semibold"> {item.status}</td>
-                  {/* <td className="text-md font-semibold">{item.agent}</td>
-                  <td className="text-md font-semibold"> {item.location}</td> */}
                   <th>
                     <NavLink to={`/dashboard/update/${item?._id}`}>
                       <button>
