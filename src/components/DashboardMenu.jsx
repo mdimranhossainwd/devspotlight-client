@@ -11,26 +11,47 @@ const DashboardMenu = () => {
 
   const menu = (
     <>
-      <NavLink
-        className={({ isActive }) => (isActive ? "text-[#28b485]" : "")}
-        to="profile"
-      >
-        My Profile
-      </NavLink>
+      {role === "normal" && (
+        <>
+          <NavLink
+            className={({ isActive }) => (isActive ? "text-[#28b485]" : "")}
+            to="profile"
+          >
+            My Profile
+          </NavLink>
 
-      <NavLink
-        className={({ isActive }) => (isActive ? "text-[#28b485]" : "")}
-        to="add-product"
-      >
-        Add Product
-      </NavLink>
+          <NavLink
+            className={({ isActive }) => (isActive ? "text-[#28b485]" : "")}
+            to="add-product"
+          >
+            Add Product
+          </NavLink>
 
-      <NavLink
-        className={({ isActive }) => (isActive ? "text-[#28b485]" : "")}
-        to="my-product"
-      >
-        My Products
-      </NavLink>
+          <NavLink
+            className={({ isActive }) => (isActive ? "text-[#28b485]" : "")}
+            to="my-product"
+          >
+            My Products
+          </NavLink>
+        </>
+      )}
+      {role === "moderator" && (
+        <>
+          <NavLink
+            className={({ isActive }) => (isActive ? "text-[#28b485]" : "")}
+            to="review-queue"
+          >
+            Review Queue
+          </NavLink>
+
+          <NavLink
+            className={({ isActive }) => (isActive ? "text-[#28b485]" : "")}
+            to="reported"
+          >
+            Reported Contents
+          </NavLink>
+        </>
+      )}
     </>
   );
 

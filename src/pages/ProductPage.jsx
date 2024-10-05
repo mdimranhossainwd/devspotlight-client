@@ -8,9 +8,11 @@ import Reviews from "../components/review/Reviews";
 import TopHeading from "../components/shared/TopHeading";
 import useAuth from "../hooks/useAuth";
 import useAxios from "../hooks/useAxios";
+import useRole from "../hooks/useRole";
 const ProductPage = () => {
   const navigate = useNavigate();
   const productInfo = useLoaderData();
+  const [role] = useRole();
   const {
     _id: productId,
     product_name,
@@ -33,6 +35,15 @@ const ProductPage = () => {
   const [rating, setRating] = useState(0);
   const [submitted, setSubmitted] = useState(false);
   const axios = useAxios();
+
+  // Reported A product
+
+  const handleReportProduct = async (e) => {
+    const { data } = await axios.post("/report", productInfo);
+    toast.success("Report sent! We will review it shortly.");
+    console.log(data);
+  };
+
   // Review Data Post on DB function
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -105,9 +116,14 @@ const ProductPage = () => {
               >
                 Upvoted
               </button>
-              <button className="mt-4 w-full text-gray-500 bg-gray-200 py-2 px-4 rounded-md hover:bg-gradient-to-r hover:from-[#28b485] hover:to-[#7ed56f] hover:text-white transition-all duration-500 ease-in-out">
-                Report
-              </button>
+              {role === "normal" && (
+                <button
+                  onClick={handleReportProduct}
+                  className="mt-4 w-full text-gray-500 bg-gray-200 py-2 px-4 rounded-md hover:bg-gradient-to-r hover:from-[#28b485] hover:to-[#7ed56f] hover:text-white transition-all duration-500 ease-in-out"
+                >
+                  Report
+                </button>
+              )}
             </div>
           </div>
         </div>
