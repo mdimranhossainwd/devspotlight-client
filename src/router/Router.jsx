@@ -64,12 +64,6 @@ const router = createBrowserRouter([
         path: "reported",
         element: <ReportPage />,
       },
-      {
-        path: ":type/:id",
-        element: <ProductPage />,
-        loader: ({ params }) =>
-          fetch(`http://localhost:5000/api/v1/${params.type}/${params.id}`),
-      },
     ],
   },
 

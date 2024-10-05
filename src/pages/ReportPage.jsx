@@ -1,4 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
+import toast from "react-hot-toast";
 import { NavLink } from "react-router-dom";
 import useAxios from "../hooks/useAxios";
 
@@ -11,13 +12,15 @@ const ReportPage = ({ type }) => {
 
   const { data: getReportData, refetch } = useQuery({
     queryKey: ["getReportData"],
-
     queryFn: getReport,
   });
 
-  // console.log(getReportData);
-  const filteredData = getReportData?.filter((item) => item.type === type);
-  console.log(filteredData);
+  const reportDeleteProduct = async (id) => {
+    const { data } = await axios.delete(`/report/${id}`);
+    toast.success("Report Product Deleted Successfully");
+    refetch();
+    console.log(data);
+  };
 
   return (
     <div>
@@ -65,28 +68,26 @@ const ReportPage = ({ type }) => {
                     </NavLink>
                   </th>
                   <th>
-                    <NavLink>
-                      <button>
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="24"
-                          height="24"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="currentColor"
-                          strokeWidth="2"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          className="lucide lucide-trash-2"
-                        >
-                          <path d="M3 6h18" />
-                          <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6" />
-                          <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2" />
-                          <line x1="10" x2="10" y1="11" y2="17" />
-                          <line x1="14" x2="14" y1="11" y2="17" />
-                        </svg>
-                      </button>
-                    </NavLink>
+                    <button onClick={() => reportDeleteProduct(item._id)}>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        className="lucide lucide-trash-2"
+                      >
+                        <path d="M3 6h18" />
+                        <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6" />
+                        <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2" />
+                        <line x1="10" x2="10" y1="11" y2="17" />
+                        <line x1="14" x2="14" y1="11" y2="17" />
+                      </svg>
+                    </button>
                   </th>
                 </tr>
               ))}
