@@ -1,10 +1,13 @@
 import { Helmet } from "react-helmet-async";
 import { NavLink } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
+import useRole from "../hooks/useRole";
 
 const DashboardMenu = () => {
   const { user } = useAuth();
-  console.log(user);
+  const [role] = useRole();
+
+  console.log(role);
 
   const menu = (
     <>

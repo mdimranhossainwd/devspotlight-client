@@ -39,6 +39,12 @@ const Register = () => {
   const handleGoogleSignUp = async () => {
     try {
       const result = await signInWithGoogle();
+      const { data } = await axios.post("/users", {
+        email: result?.user?.email,
+        name: result?.user?.displayName,
+        photo: result?.user?.photoURL,
+        role: "normal",
+      });
       console.log(result);
       navigate(from, { replace: true });
     } catch (err) {
