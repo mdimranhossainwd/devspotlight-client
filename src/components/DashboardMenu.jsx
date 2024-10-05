@@ -11,7 +11,7 @@ const DashboardMenu = () => {
 
   const menu = (
     <>
-      {role === "normal" && (
+      {role === "member" && (
         <>
           <NavLink
             className={({ isActive }) => (isActive ? "text-[#28b485]" : "")}
