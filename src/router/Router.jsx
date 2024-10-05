@@ -9,6 +9,7 @@ import ErrorPage from "../pages/ErrorPage";
 import HomePages from "../pages/HomePages";
 import MyProductPage from "../pages/MyProductPage";
 import ProductPage from "../pages/ProductPage";
+import ReportPage from "../pages/ReportPage";
 import UpdateProduct from "../pages/UpdateProduct";
 import PrivateRouter from "./PrivateRouter";
 
@@ -58,6 +59,16 @@ const router = createBrowserRouter([
       {
         path: "update/:id",
         element: <UpdateProduct />,
+      },
+      {
+        path: "reported",
+        element: <ReportPage />,
+      },
+      {
+        path: ":type/:id",
+        element: <ProductPage />,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/api/v1/${params.type}/${params.id}`),
       },
     ],
   },
