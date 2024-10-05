@@ -7,6 +7,7 @@ import MainLayout from "../layout/MainLayout";
 import AddProductPage from "../pages/AddProductPage";
 import ErrorPage from "../pages/ErrorPage";
 import HomePages from "../pages/HomePages";
+import ManageUser from "../pages/ManageUser";
 import MyProductPage from "../pages/MyProductPage";
 import ProductPage from "../pages/ProductPage";
 import ReportPage from "../pages/ReportPage";
@@ -63,6 +64,10 @@ const router = createBrowserRouter([
       {
         path: "reported",
         element: <ReportPage />,
+      },
+      {
+        path: "manage-user",
+        element: <ManageUser />,
       },
     ],
   },

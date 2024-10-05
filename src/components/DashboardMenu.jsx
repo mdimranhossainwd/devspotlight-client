@@ -52,6 +52,16 @@ const DashboardMenu = () => {
           </NavLink>
         </>
       )}
+      {role === "admin" && (
+        <>
+          <NavLink
+            className={({ isActive }) => (isActive ? "text-[#28b485]" : "")}
+            to="manage-user"
+          >
+            Manage User's
+          </NavLink>
+        </>
+      )}
     </>
   );
 
