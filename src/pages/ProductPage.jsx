@@ -116,7 +116,7 @@ const ProductPage = () => {
               >
                 Upvoted
               </button>
-              {role === "normal" && (
+              {role === "member" && (
                 <button
                   onClick={handleReportProduct}
                   className="mt-4 w-full text-gray-500 bg-gray-200 py-2 px-4 rounded-md hover:bg-gradient-to-r hover:from-[#28b485] hover:to-[#7ed56f] hover:text-white transition-all duration-500 ease-in-out"

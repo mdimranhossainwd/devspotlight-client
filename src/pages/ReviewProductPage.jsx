@@ -18,28 +18,17 @@ const ReviewProductPage = () => {
   });
   console.log(getProduct);
 
+  // Only Moderator user's product data showing in UI
   const handleReviewProduct = async (id) => {
     // Find the specific product using the id
     const selectedProduct = getProduct.find((product) => product._id === id);
-    const {
-      _id,
-      name,
-      img,
-      descriptions,
-      email,
-      ownerName,
-      link,
-      tags,
-      photo,
-      timestamp,
-      status,
-    } = selectedProduct || {};
+    const { name, img, descriptions, tags, timestamp } = selectedProduct || {};
 
+    // Making to Features Keys
     const product_name = name;
     const product_img = img;
     const product_description = descriptions;
     const product_tags = tags;
-
     const product_totalcount = 11;
     const postReviewData = {
       product_name,
