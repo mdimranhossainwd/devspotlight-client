@@ -50,7 +50,7 @@ const Card = ({ item, type }) => {
           </span>
         </div>
         <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
-          {product_description}
+          {product_description.substring(0, 54)}
         </p>
 
         <div className="mt-4">

@@ -1,9 +1,12 @@
 import { useQuery } from "@tanstack/react-query";
+import { useState } from "react";
+import toast from "react-hot-toast";
 import { NavLink } from "react-router-dom";
 import useAxios from "../hooks/useAxios";
 
 const ReviewProductPage = () => {
   const axios = useAxios();
+  const [postData, setPostData] = useState({});
   const getData = async () => {
     const { data } = await axios.get("/review-products");
     return data;
@@ -14,6 +17,51 @@ const ReviewProductPage = () => {
     queryFn: getData,
   });
   console.log(getProduct);
+
+  const handleReviewProduct = async (id) => {
+    // Find the specific product using the id
+    const selectedProduct = getProduct.find((product) => product._id === id);
+    const {
+      _id,
+      name,
+      img,
+      descriptions,
+      email,
+      ownerName,
+      link,
+      tags,
+      photo,
+      timestamp,
+      status,
+    } = selectedProduct || {};
+
+    const product_name = name;
+    const product_img = img;
+    const product_description = descriptions;
+    const product_tags = tags;
+
+    const product_totalcount = 11;
+    const postReviewData = {
+      product_name,
+      product_img,
+      product_description,
+      product_tags,
+      timestamp,
+      product_totalcount,
+    };
+    console.log(postReviewData);
+
+    try {
+      const { data } = await axios.post(
+        `/review-products/${id}`,
+        postReviewData
+      );
+      toast.success("Added this product to Home");
+      console.log(data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   return (
     <div className="mt-12">
@@ -63,7 +111,7 @@ const ReviewProductPage = () => {
                   </td>
                   <td className="text-md font-semibold"> {item.status}</td>
                   <th>
-                    <button>
+                    <button onClick={() => handleReviewProduct(item?._id)}>
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         width="24"
