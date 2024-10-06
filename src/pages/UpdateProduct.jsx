@@ -53,10 +53,7 @@ const UpdateProduct = () => {
     console.log(updateFormData);
 
     try {
-      const { data } = await axios.patch(
-        `/add-products/${_id}`,
-        updateFormData
-      );
+      const { data } = await axios.put(`/add-products/${_id}`, updateFormData);
       console.log(data);
       toast.success("Product update successfully");
       navigate("/dashboard/my-product");

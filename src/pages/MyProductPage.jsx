@@ -38,7 +38,19 @@ const MyProductPage = () => {
                 <tr key={item._id}>
                   <td className="font-medium text-[16px]">{item.name}</td>
                   <td className="font-medium">11</td>
-                  <td className="text-md font-semibold"> {item.status}</td>
+                  <td
+                    className={`text-md badge mt-3 font-semibold ${
+                      item.status === "Accepted" &&
+                      "bg-emerald-100/60 text-emerald-500"
+                    } ${
+                      item.status === "pending" &&
+                      "bg-blue-100/60 text-blue-500"
+                    } ${
+                      item.status === "Rejected" && "bg-red-100/60 text-red-500"
+                    }`}
+                  >
+                    {item.status}
+                  </td>
                   <th>
                     <NavLink to={`/dashboard/update/${item?._id}`}>
                       <button>

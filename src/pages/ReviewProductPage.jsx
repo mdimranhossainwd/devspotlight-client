@@ -1,12 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
-import { useState } from "react";
 import toast from "react-hot-toast";
 import { NavLink } from "react-router-dom";
 import useAxios from "../hooks/useAxios";
 
 const ReviewProductPage = () => {
   const axios = useAxios();
-  const [postData, setPostData] = useState({});
   const getData = async () => {
     const { data } = await axios.get("/review-products");
     return data;
@@ -50,6 +48,13 @@ const ReviewProductPage = () => {
     } catch (err) {
       console.log(err);
     }
+  };
+
+  // Change the Product Status
+  const handleProductStatus = async (id, prevStatus, status) => {
+    const { data } = await axios.patch(`/review-products/${id}`, { status });
+    refetch();
+    toast.success(`Product ${status} Successfully`);
   };
 
   return (
@@ -98,7 +103,19 @@ const ReviewProductPage = () => {
                       </button>
                     </NavLink>
                   </td>
-                  <td className="text-md font-semibold"> {item.status}</td>
+                  <td
+                    className={`text-md badge mt-3 font-semibold ${
+                      item.status === "Accepted" &&
+                      "bg-emerald-100/60 text-emerald-500"
+                    } ${
+                      item.status === "pending" &&
+                      "bg-blue-100/60 text-blue-500"
+                    } ${
+                      item.status === "Rejected" && "bg-red-100/60 text-red-500"
+                    }`}
+                  >
+                    {item.status}
+                  </td>
                   <th>
                     <button onClick={() => handleReviewProduct(item?._id)}>
                       <svg
@@ -119,27 +136,37 @@ const ReviewProductPage = () => {
                     </button>
                   </th>
                   <th>
-                    <NavLink>
-                      <button>
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="24"
-                          height="24"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="currentColor"
-                          strokeWidth="2"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          className="lucide lucide-check"
-                        >
-                          <path d="M20 6 9 17l-5-5" />
-                        </svg>
-                      </button>
-                    </NavLink>
+                    <button
+                      onClick={() =>
+                        handleProductStatus(item._id, item.status, "Accepted")
+                      }
+                      disabled={item.status === "Accepted"}
+                      className="disabled:cursor-not-allowed text-gray-500 transition-colors duration-200   hover:text-green-500 focus:outline-none"
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        className="lucide lucide-check"
+                      >
+                        <path d="M20 6 9 17l-5-5" />
+                      </svg>
+                    </button>
                   </th>
                   <th>
-                    <button>
+                    <button
+                      onClick={() =>
+                        handleProductStatus(item._id, item.status, "Rejected")
+                      }
+                      disabled={item.status === "Rejected"}
+                      className="disabled:cursor-not-allowed text-gray-500 transition-colors duration-200   hover:text-red-500 focus:outline-none"
+                    >
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         width="24"
