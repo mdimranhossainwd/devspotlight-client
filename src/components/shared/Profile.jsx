@@ -1,12 +1,28 @@
+import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 import { Helmet } from "react-helmet-async";
 import useAuth from "../../hooks/useAuth";
+import useAxios from "../../hooks/useAxios";
 import PaymentModal from "./PaymentModal";
 
 const Profile = () => {
   const { user } = useAuth();
   const [isOpen, setIsOpen] = useState(false);
   const [amount, setAmount] = useState(10);
+  const axios = useAxios();
+
+  const getData = async () => {
+    const { data } = await axios.get("/payment");
+    return data;
+  };
+
+  const { data: getVerified, refetch } = useQuery({
+    queryKey: ["getVerified"],
+    queryFn: getData,
+  });
+
+  const filterStatus = getVerified?.find((item) => item?.email === user?.email);
+  const { status } = filterStatus || {};
 
   return (
     <div className=" min-h-screen p-6 flex justify-center">
@@ -51,15 +67,20 @@ const Profile = () => {
             </div>
             <div>
               <p className="text-gray-700 font-semibold">Subscription Type</p>
-
-              <button
-                onClick={() => {
-                  setIsOpen(!isOpen);
-                }}
-                className="bg-gradient-to-r font-semibold from-[#7ed56f] to-[#28b485] my-4 text-white px-6 py-3 rounded-md  transition duration-300"
-              >
-                Subscribe for $ {amount}
-              </button>
+              {status === "verified" ? (
+                <h3 className="text-[#28b485] font-josefin font-semibold mt-2">
+                  Verified
+                </h3>
+              ) : (
+                <button
+                  onClick={() => {
+                    setIsOpen(!isOpen);
+                  }}
+                  className="bg-gradient-to-r font-semibold from-[#7ed56f] to-[#28b485] my-4 text-white px-6 py-3 rounded-md transition duration-300"
+                >
+                  Subscribe for $ {amount}
+                </button>
+              )}
             </div>
             <div>
               <p className="text-gray-700 font-semibold">Time Zone</p>
