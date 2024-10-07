@@ -43,7 +43,7 @@ const Register = () => {
         email: result?.user?.email,
         name: result?.user?.displayName,
         photo: result?.user?.photoURL,
-        role: "normal",
+        role: "member",
       });
       console.log(result);
       navigate(from, { replace: true });

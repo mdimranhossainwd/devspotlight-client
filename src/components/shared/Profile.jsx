@@ -6,6 +6,8 @@ import PaymentModal from "./PaymentModal";
 const Profile = () => {
   const { user } = useAuth();
   const [isOpen, setIsOpen] = useState(false);
+  const [amount, setAmount] = useState(10);
+
   return (
     <div className=" min-h-screen p-6 flex justify-center">
       <Helmet>
@@ -36,7 +38,7 @@ const Profile = () => {
         </div>
 
         {/* Profile Details */}
-        <PaymentModal isOpen={isOpen} setIsOpen={setIsOpen} />
+        <PaymentModal isOpen={isOpen} setIsOpen={setIsOpen} amount={amount} />
         <div className="p-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
@@ -49,13 +51,14 @@ const Profile = () => {
             </div>
             <div>
               <p className="text-gray-700 font-semibold">Subscription Type</p>
+
               <button
                 onClick={() => {
                   setIsOpen(!isOpen);
                 }}
                 className="bg-gradient-to-r font-semibold from-[#7ed56f] to-[#28b485] my-4 text-white px-6 py-3 rounded-md  transition duration-300"
               >
-                Subscribe for $10
+                Subscribe for $ {amount}
               </button>
             </div>
             <div>

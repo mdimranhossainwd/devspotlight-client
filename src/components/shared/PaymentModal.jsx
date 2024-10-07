@@ -1,6 +1,12 @@
-import Modal from "./Modal";
+import { Elements } from "@stripe/react-stripe-js";
+import { loadStripe } from "@stripe/stripe-js";
 
-const PaymentModal = ({ isOpen, setIsOpen }) => {
+import CheckOutForm from "../form/CheckOutForm";
+import Modal from "./Modal";
+const stripePromise = loadStripe(import.meta.env.VITE_DEVSPOTLIGHT_PK_KEY);
+
+const PaymentModal = ({ isOpen, setIsOpen, amount }) => {
+  const price = 10;
   return (
     <div>
       <Modal
@@ -8,12 +14,15 @@ const PaymentModal = ({ isOpen, setIsOpen }) => {
         setIsOpen={setIsOpen}
         title="Subscribtions Payment Now"
       >
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit autem
-          ratione exercitationem, voluptates odio obcaecati expedita,
-          repellendus itaque magni omnis aliquid vero at nemo, voluptatibus a
-          debitis necessitatibus deserunt ipsa!
+        <p className="mt-3">
+          You're one step away from exploring exclusive content and features.
+          Complete your subscription to join our growing community of
+          developers!
         </p>
+
+        <Elements stripe={stripePromise}>
+          <CheckOutForm price={amount} />
+        </Elements>
       </Modal>
     </div>
   );
