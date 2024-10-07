@@ -43,7 +43,7 @@ const MyProductPage = () => {
                       item.status === "Accepted" &&
                       "bg-emerald-100/60 text-emerald-500"
                     } ${
-                      item.status === "pending" &&
+                      item.status === "Pending" &&
                       "bg-blue-100/60 text-blue-500"
                     } ${
                       item.status === "Rejected" && "bg-red-100/60 text-red-500"
