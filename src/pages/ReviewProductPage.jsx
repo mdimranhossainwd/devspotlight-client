@@ -65,7 +65,7 @@ const ReviewProductPage = () => {
         </h2>
       </div>
       <div>
-        <div className="px-10 mt-10">
+        <div className="px-3 md:px-10 mt-10">
           <table className="table w-full">
             {/* head */}
             <thead className="w-full text-white bg-gradient-to-r from-[#7ed56f] to-[#28b485] text-center">

@@ -73,9 +73,9 @@ const ProductPage = () => {
         text="Explore our top picks for the most innovative and helpful developer tools available today. These tools are designed to streamline workflows, enhance collaboration, and boost productivity, enabling developers to build high-quality software more efficiently and effectively than ever before."
       />
       <div className="flex justify-center items-start p-10 min-h-screen">
-        <div className="bg-gray-50 shadow-md rounded-lg p-16 flex space-x-16">
+        <div className="bg-gray-50 shadow-md rounded-lg p-16 lg:flex lg:space-x-16">
           {/* Product Image Section */}
-          <div className="w-1/2">
+          <div className="lg:w-1/2">
             <img
               src={product_img} // Replace with your image URL
               alt="Product"
@@ -84,7 +84,7 @@ const ProductPage = () => {
           </div>
 
           {/* Product Information Section */}
-          <div className="w-1/2">
+          <div className="lg:w-1/2 mt-6 lg:mt-0">
             <h1 className="text-3xl font-semibold mb-4 text-gray-800">
               {product_name}
             </h1>
@@ -255,7 +255,7 @@ const ProductPage = () => {
           </TabPanel>
         </Tabs>
       </div>
-      <div className="">
+      <div className="mx-6 md:mx-0">
         <Reviews />
       </div>
     </div>

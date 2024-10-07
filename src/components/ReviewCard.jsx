@@ -2,7 +2,7 @@ const ReviewCard = ({ item }) => {
   const { _id, productId, img, name, rating, review } = item || {};
   return (
     <div>
-      <div className="flex bg-[#1E293B99] p-6 rounded-lg shadow-lg text-white space-x-4 mb-6">
+      <div className="flex bg-[#1E293B99] p-6 rounded-lg shadow-lg text-white space-x-4 mb-3">
         {/* Profile Picture */}
         <div className="flex-shrink-0">
           <img

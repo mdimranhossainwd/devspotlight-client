@@ -27,7 +27,7 @@ const ManageUser = () => {
           Manage All User's
         </h2>
       </div>
-      <div className="px-10">
+      <div className="px-3 md:px-10">
         <table className="table w-full">
           <thead className="w-full text-white bg-gradient-to-r from-[#7ed56f] to-[#28b485] text-center">
             <tr className="text-lg font-pt">

@@ -22,7 +22,7 @@ const TreadSections = () => {
         text="Explore our top picks for the most innovative and helpful developer tools available today. These tools are designed to streamline workflows, enhance collaboration, and boost productivity, enabling developers to build high-quality software more efficiently and effectively than ever before."
       />
       <div className="container mx-auto">
-        <div className="flex items-center justify-between my-8">
+        <div className="flex items-center justify-between my-8 mx-6 md:mx-0">
           <h2 className="text-lg font-semibold">Sorting By data :</h2>
           <div>
             <select
@@ -40,7 +40,7 @@ const TreadSections = () => {
             </select>
           </div>
         </div>
-        <div className="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-4">
+        <div className="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-4 mx-6 md:mx-0">
           {card?.map((item) => (
             <Card item={item} key={item?._id} type="trending" />
           ))}
