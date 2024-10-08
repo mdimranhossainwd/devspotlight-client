@@ -4,6 +4,7 @@ import Register from "../components/authentication/Register";
 import Profile from "../components/shared/Profile";
 import DashboardLayout from "../layout/DashboardLayout";
 import MainLayout from "../layout/MainLayout";
+import AcceptProduct from "../pages/AcceptProduct";
 import AddProductPage from "../pages/AddProductPage";
 import DashboardProductDetails from "../pages/DashboardProductDetails";
 import ErrorPage from "../pages/ErrorPage";
@@ -35,6 +36,10 @@ const router = createBrowserRouter([
         ),
         loader: ({ params }) =>
           fetch(`http://localhost:5000/api/v1/${params.type}/${params.id}`),
+      },
+      {
+        path: "/product",
+        element: <AcceptProduct />,
       },
     ],
   },

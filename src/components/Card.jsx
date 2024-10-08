@@ -30,7 +30,7 @@ const Card = ({ item, type }) => {
         style={{
           clipPath: "polygon(0 0, 100% 0, 100% 85%, 0 100%)",
         }}
-        className="object-cover  h-60"
+        className="object-cover w-full h-60"
         src={product_img}
       />
 

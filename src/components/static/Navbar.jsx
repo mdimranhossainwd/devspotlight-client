@@ -17,7 +17,12 @@ const Navbar = () => {
       >
         Home
       </NavLink>
-      <NavLink to="/product">Product</NavLink>
+      <NavLink
+        className={({ isActive }) => (isActive ? "text-[#28b485]" : "")}
+        to="/product"
+      >
+        Product
+      </NavLink>
       <NavLink to="/blog">Blog</NavLink>
       <NavLink>About</NavLink>
       {!user && <NavLink to="/login">Login</NavLink>}
