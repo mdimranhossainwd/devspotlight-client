@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
+import useAxios from "../../hooks/useAxios";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -10,6 +11,7 @@ const Login = () => {
   const location = useLocation();
   const { register, handleSubmit } = useForm();
   const from = location.state || "/";
+  const axios = useAxios();
   // LOGIN WITH FUNCTIONALITY
   const handleLogin = async (data) => {
     const { email, password } = data;
@@ -17,6 +19,7 @@ const Login = () => {
       const result = await signIn(email, password);
       console.log(result);
       toast.success("SignIn Successfully");
+      const { data } = await axios.post("/jwt", result?.user?.email);
       navigate(from, { replace: true });
     } catch (err) {
       console.log(err);
@@ -28,6 +31,7 @@ const Login = () => {
     try {
       const result = await signInWithGoogle();
       console.log(result);
+      const { data } = await axios.post("/jwt", result?.user?.email);
       navigate("/");
     } catch (err) {
       console.log(err);

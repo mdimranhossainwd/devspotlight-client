@@ -9,30 +9,31 @@ const AcceptProduct = () => {
   const [product, setProduct] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [count, setCount] = useState(0);
+  const [sort, setSort] = useState();
+  const [search, setSearch] = useState();
+  const [searchText, setSearchText] = useState("");
   const axios = useAxios();
 
   useEffect(() => {
     const getData = async () => {
       const { data } = await axios.get(
-        `/accepted-products?page=${currentPage}&size=${itemPerPage}`
+        `/accepted-products?page=${currentPage}&size=${itemPerPage}&sort=${sort}&search=${search}`
       );
       const acceptedData = data.filter((item) => item.status === "Accepted");
       setProduct(acceptedData);
       // setCount(acceptedData.length);
     };
     getData();
-  }, [currentPage, itemPerPage]);
+  }, [currentPage, itemPerPage, sort, search]);
 
   useEffect(() => {
     const getCount = async () => {
-      const { data } = await axios.get("/products-count");
+      const { data } = await axios.get(`/products-count?search=${search}`);
       setCount(data.count);
     };
     getCount();
-  }, []);
-  console.log(count);
+  }, [search]);
 
-  // const acceptData = product?.filter((item) => item.status === "Accepted");
   const numberOfPages = Math.ceil(count / itemPerPage);
   const pages = [...Array(numberOfPages).keys()].map(
     (elements) => elements + 1
@@ -40,8 +41,15 @@ const AcceptProduct = () => {
   console.log(pages);
 
   const handlePaginationButton = (value) => {
-    console.log(value);
     setCurrentPage(value);
+  };
+
+  // Search a product tags
+  const handleSearch = (e) => {
+    e.preventDefault();
+    const name = e.target.search.value;
+    setSearch(name);
+    setCurrentPage(1);
   };
 
   return (
@@ -51,12 +59,14 @@ const AcceptProduct = () => {
       </div>
       <div>
         <div className="flex flex-col md:flex-row justify-center items-center gap-5 ">
-          <form>
+          <form onSubmit={handleSearch}>
             <div className="flex p-1 overflow-hidden border rounded-lg    focus-within:ring focus-within:ring-opacity-40 focus-within:border-blue-400 focus-within:ring-blue-300">
               <input
                 className="px-6 py-2 text-gray-700 placeholder-gray-500 bg-white outline-none focus:placeholder-transparent"
                 type="text"
                 name="search"
+                onChange={(e) => setSearchText(e.target.value)}
+                value={searchText}
                 placeholder="Search by Product tags"
                 aria-label="Enter Job Title"
               />
@@ -67,7 +77,16 @@ const AcceptProduct = () => {
             </div>
           </form>
           <div>
-            <select name="sort" id="sort" className="border p-4 rounded-md">
+            <select
+              onChange={(e) => {
+                setSort(e.target.value);
+                setCurrentPage(1);
+              }}
+              value={sort}
+              name="sort"
+              id="sort"
+              className="border p-4 rounded-md"
+            >
               <option value="">Sort By Time</option>
               <option value="dsc">Biggest</option>
               <option value="asc">Lowest</option>

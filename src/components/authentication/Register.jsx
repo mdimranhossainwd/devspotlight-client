@@ -28,6 +28,9 @@ const Register = () => {
         photo,
         role: "normal",
       });
+      const { data } = await axios.post("/jwt", result?.user?.email);
+      console.log(data);
+
       navigate(from, { replace: true });
       toast.success("User created Successfully ");
     } catch (err) {
@@ -45,7 +48,8 @@ const Register = () => {
         photo: result?.user?.photoURL,
         role: "member",
       });
-      console.log(result);
+      await axios.post("/jwt", result?.user?.email);
+      console.log(data);
       navigate(from, { replace: true });
     } catch (err) {
       console.log(err);
