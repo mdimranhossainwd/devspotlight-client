@@ -26,7 +26,7 @@ const Register = () => {
         email,
         name,
         photo,
-        role: "normal",
+        role: "member",
       });
       const { data } = await axios.post("/jwt", result?.user?.email);
       console.log(data);

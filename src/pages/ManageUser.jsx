@@ -1,9 +1,11 @@
 import { useQuery } from "@tanstack/react-query";
 import { Helmet } from "react-helmet-async";
+import toast from "react-hot-toast";
 import useAxios from "../hooks/useAxios";
 
 const ManageUser = () => {
   const axios = useAxios();
+
   const getUserData = async () => {
     const { data } = await axios.get("/users");
     return data;
@@ -13,6 +15,26 @@ const ManageUser = () => {
     queryKey: ["getUserInfo"],
     queryFn: getUserData,
   });
+
+  // Change user's Role
+  const changeUserRole = async (id, currentRole) => {
+    const newRole = currentRole === "member" ? "moderator" : "member";
+    try {
+      const { data } = await axios.patch(`/users/${id}`, { role: newRole });
+      toast.success(`User role updated to ${newRole}`);
+      refetch();
+    } catch (error) {
+      toast.error("Failed to update role");
+      console.error("Error updating role:", error);
+    }
+  };
+
+  // Delete a user's
+  const hangleDeleteUser = async (id) => {
+    const { data } = await axios.delete(`/users/${id}`);
+    toast.success("Delete this user");
+    refetch();
+  };
 
   console.log(getUserInfo);
 
@@ -52,14 +74,19 @@ const ManageUser = () => {
                 <td className="px-4 py-2">{item?.email}</td>
                 <td className="px-4 py-2">
                   <button
-                    onClick={() => setIsOpen(!isOpen)}
+                    onClick={() =>
+                      changeUserRole(item?._id, item?.role, "Moderator")
+                    }
                     className="bg-gray-300 w-2/3 text-black font-semibold rounded px-4 py-1"
                   >
                     {item?.role}
                   </button>
                 </td>
                 <td className="px-4 py-2">
-                  <button className="rounded px-4 py-1">
+                  <button
+                    onClick={() => hangleDeleteUser(item?._id)}
+                    className="rounded px-4 py-1"
+                  >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="24"
