@@ -85,7 +85,12 @@ const ManageUser = () => {
                 <td className="px-4 py-2">
                   <button
                     onClick={() => hangleDeleteUser(item?._id)}
-                    className="rounded px-4 py-1"
+                    disabled={item?.role === "admin"}
+                    className={`rounded px-4 py-1 ${
+                      item?.role === "admin"
+                        ? "cursor-not-allowed opacity-50"
+                        : ""
+                    }`}
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"

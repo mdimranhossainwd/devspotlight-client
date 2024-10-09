@@ -56,6 +56,12 @@ const DashboardMenu = () => {
         <>
           <NavLink
             className={({ isActive }) => (isActive ? "text-[#28b485]" : "")}
+            to="payment"
+          >
+            Payment History
+          </NavLink>
+          <NavLink
+            className={({ isActive }) => (isActive ? "text-[#28b485]" : "")}
             to="manage-user"
           >
             Manage User's

@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Helmet } from "react-helmet-async";
 import { IoMdArrowDropup } from "react-icons/io";
 import { Link } from "react-router-dom";
 import TopHeading from "../components/shared/TopHeading";
@@ -14,46 +15,48 @@ const AcceptProduct = () => {
   const [searchText, setSearchText] = useState("");
   const axios = useAxios();
 
+  // Fetch products with pagination, sorting, and search
   useEffect(() => {
     const getData = async () => {
       const { data } = await axios.get(
         `/accepted-products?page=${currentPage}&size=${itemPerPage}&sort=${sort}&search=${search}`
       );
-      const acceptedData = data.filter((item) => item.status === "Accepted");
-      setProduct(acceptedData);
-      // setCount(acceptedData.length);
+      setProduct(data);
     };
     getData();
   }, [currentPage, itemPerPage, sort, search]);
 
+  // Fetch the count of accepted products
   useEffect(() => {
     const getCount = async () => {
-      const { data } = await axios.get(`/products-count?search=${search}`);
+      const { data } = await axios.get(`/products-count?serch=${search}`);
       setCount(data.count);
     };
     getCount();
   }, [search]);
 
+  // Calculate the number of pages
   const numberOfPages = Math.ceil(count / itemPerPage);
   const pages = [...Array(numberOfPages).keys()].map(
     (elements) => elements + 1
   );
-  console.log(pages);
 
   const handlePaginationButton = (value) => {
     setCurrentPage(value);
   };
 
-  // Search a product tags
+  // Search by product tags
   const handleSearch = (e) => {
     e.preventDefault();
     const name = e.target.search.value;
     setSearch(name);
-    setCurrentPage(1);
+    setCurrentPage(1); // Reset to first page after search
   };
-
   return (
     <div className="container px-6 py-10 mx-auto min-h-[calc(100vh-306px)] flex flex-col justify-between">
+      <Helmet>
+        <title>devspotlight || Acceptable Product Page</title>
+      </Helmet>
       <div className="mt-8">
         <TopHeading heading="Only Acceptable Products Here " />
       </div>

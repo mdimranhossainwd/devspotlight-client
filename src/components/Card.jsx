@@ -44,7 +44,6 @@ const Card = ({ item, type }) => {
           >
             {product_name}
           </Link>
-          <p className="font-semibold ">{timestamp}</p>
           <span className="text-xs font-medium underline text-blue-600 lowercase dark:text-blue-400">
             {[product_tags[0]]}
           </span>
@@ -54,7 +53,7 @@ const Card = ({ item, type }) => {
         </p>
 
         <div className="mt-4">
-          <div className="text-lg font-semibold  w-12 gap-3 text-center flex items-center">
+          <div className="text-lg flex items-center justify-between gap-3 font-semibold w-12 ">
             <div
               onClick={handleUpvote}
               className="text-3xl text-gray-200 cursor-pointer border p-1 rounded-md"
@@ -62,6 +61,7 @@ const Card = ({ item, type }) => {
               <IoMdArrowDropup />
             </div>
             <span>{voteCount}</span>
+            <p className="font-semibold ml-24">{timestamp}</p>
           </div>
         </div>
       </div>

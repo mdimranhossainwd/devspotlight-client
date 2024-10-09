@@ -11,6 +11,7 @@ import ErrorPage from "../pages/ErrorPage";
 import HomePages from "../pages/HomePages";
 import ManageUser from "../pages/ManageUser";
 import MyProductPage from "../pages/MyProductPage";
+import PaymentPage from "../pages/PaymentPage";
 import ProductPage from "../pages/ProductPage";
 import ReportPage from "../pages/ReportPage";
 import ReviewProductPage from "../pages/ReviewProductPage";
@@ -39,7 +40,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/product",
-        element: <AcceptProduct />,
+        element: (
+          <PrivateRouter>
+            <AcceptProduct />
+          </PrivateRouter>
+        ),
       },
     ],
   },
@@ -70,7 +75,11 @@ const router = createBrowserRouter([
       },
       {
         path: "review-queue",
-        element: <ReviewProductPage />,
+        element: (
+          <PrivateRouter>
+            <ReviewProductPage />
+          </PrivateRouter>
+        ),
       },
       {
         path: "details/:id",
@@ -82,7 +91,19 @@ const router = createBrowserRouter([
       },
       {
         path: "manage-user",
-        element: <ManageUser />,
+        element: (
+          <PrivateRouter>
+            <ManageUser />
+          </PrivateRouter>
+        ),
+      },
+      {
+        path: "payment",
+        element: (
+          <PrivateRouter>
+            <PaymentPage />
+          </PrivateRouter>
+        ),
       },
     ],
   },
