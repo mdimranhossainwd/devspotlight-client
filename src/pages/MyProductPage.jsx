@@ -4,7 +4,6 @@ import useProduct from "../hooks/useProduct";
 
 const MyProductPage = () => {
   const [product, refetch] = useProduct();
-  console.log(product);
   const axios = useAxios();
 
   const handleDelete = async (id) => {

@@ -7,8 +7,6 @@ const DashboardMenu = () => {
   const { user } = useAuth();
   const [role] = useRole();
 
-  console.log(role);
-
   const menu = (
     <>
       {role === "member" && (

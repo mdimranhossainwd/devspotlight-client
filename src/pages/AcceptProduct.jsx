@@ -50,7 +50,7 @@ const AcceptProduct = () => {
     e.preventDefault();
     const name = e.target.search.value;
     setSearch(name);
-    setCurrentPage(1); // Reset to first page after search
+    setCurrentPage(1); //ff Reset to first page after search
   };
   return (
     <div className="container px-6 py-10 mx-auto min-h-[calc(100vh-306px)] flex flex-col justify-between">

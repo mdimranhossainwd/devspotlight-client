@@ -36,8 +36,6 @@ const ManageUser = () => {
     refetch();
   };
 
-  console.log(getUserInfo);
-
   return (
     <div>
       <Helmet>

@@ -52,11 +52,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/dashboard",
-    element: (
-      <PrivateRouter>
-        <DashboardLayout />
-      </PrivateRouter>
-    ),
+    element: <DashboardLayout />,
     errorElement: <ErrorPage />,
     children: [
       {
@@ -77,11 +73,7 @@ const router = createBrowserRouter([
       },
       {
         path: "review-queue",
-        element: (
-          <PrivateRouter>
-            <ReviewProductPage />
-          </PrivateRouter>
-        ),
+        element: <ReviewProductPage />,
       },
       {
         path: "details/:id",
@@ -93,19 +85,11 @@ const router = createBrowserRouter([
       },
       {
         path: "manage-user",
-        element: (
-          <PrivateRouter>
-            <ManageUser />
-          </PrivateRouter>
-        ),
+        element: <ManageUser />,
       },
       {
         path: "payment",
-        element: (
-          <PrivateRouter>
-            <PaymentPage />
-          </PrivateRouter>
-        ),
+        element: <PaymentPage />,
       },
     ],
   },

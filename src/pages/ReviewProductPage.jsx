@@ -14,8 +14,6 @@ const ReviewProductPage = () => {
     queryKey: ["getProduct"],
     queryFn: getData,
   });
-  console.log(getProduct);
-
   // Only Moderator user's product data showing in UI
   const handleReviewProduct = async (id) => {
     // Find the specific product using the id

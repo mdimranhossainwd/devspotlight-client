@@ -9,7 +9,6 @@ const AddProductPage = () => {
   const { user } = useAuth();
   const [selected, setSelected] = useState([]);
   const [date, setDate] = useState(new Date());
-  console.log(date);
 
   const axios = useAxios();
   const navigate = useNavigate();
@@ -45,7 +44,6 @@ const AddProductPage = () => {
 
     try {
       const { data } = await axios.post("/add-products", addProductData);
-      console.log(data);
       toast.success("Add New Product");
       navigate("/dashboard/my-product");
     } catch (err) {
