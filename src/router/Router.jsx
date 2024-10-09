@@ -36,7 +36,9 @@ const router = createBrowserRouter([
           </PrivateRouter>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/api/v1/${params.type}/${params.id}`),
+          fetch(
+            `https://devspotlight-server.vercel.app/api/v1/${params.type}/${params.id}`
+          ),
       },
       {
         path: "/product",
