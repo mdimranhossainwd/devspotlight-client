@@ -27,3 +27,9 @@ The goal of DevSpotlight is to:
 - **Responsive Design**: Optimized for both desktop and mobile devices.
 
 ---
+
+
+### Deployment
+
+- **Firebase Hosting**: For deploying and hosting the web app.
+
