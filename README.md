@@ -1,7 +1,8 @@
 #  DevSpotlight
 
 
-DevSpotlight is a modern, responsive portfolio website designed to showcase personal projects, skills, and achievements. Built using React and Vite, it offers a visually appealing and user-friendly platform for developers to highlight their work.
+**DevSpotlight** is a full-featured developer portfolio and blog platform that allows users to showcase their work, write blog posts, and interact via a modern, responsive UI. The project supports **multi-role access**, a secure **auth system**, and **real-time dashboard functionality** for enhanced user experience.
+
 
 
 ## 🌐 [DevSpotlight](https://devspotlight-9f31a.web.app/)
@@ -10,11 +11,7 @@ DevSpotlight is a modern, responsive portfolio website designed to showcase pers
 
 ## 🎯 Project Purpose
 
-The goal of DevSpotlight is to:
-
-- Create a fast and responsive portfolio platform.
-- Provide an interactive interface to display personal projects and skills.
-- Enhance proficiency with React and Vite in a real-world project.
+> To create a professional, real-world MERN stack-based platform that showcases developers' profiles, skills, and blogs. This project improves my understanding of full-stack development, role-based access, and dynamic dashboard data management.
 
 ---
 
@@ -32,4 +29,27 @@ The goal of DevSpotlight is to:
 ### Deployment
 
 - **Firebase Hosting**: For deploying and hosting the web app.
+
+
+## 🧰 Technologies Used
+
+### 🖥️ Frontend
+
+- **React.js** – Component-based UI
+- **Vite** – Fast development build tool
+- **React Router DOM** – Client-side routing
+- **Tailwind CSS** + **DaisyUI** – Styling and components
+- **Axios** – HTTP requests
+- **TanStack Query** – Data fetching and caching
+- **Firebase Authentication** – User login/signup
+- **React Hook Form** – Form management
+
+### 🛠️ Backend
+
+- **Node.js** – JavaScript runtime
+- **Express.js** – Backend framework
+- **MongoDB** – NoSQL database
+- **JWT** – Role-based protected routes
+- **Stripe** – Payment handling (if integrated)
+- **Dotenv & Cors** – Config & security
 
