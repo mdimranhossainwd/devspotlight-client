@@ -17,3 +17,13 @@ The goal of DevSpotlight is to:
 - Enhance proficiency with React and Vite in a real-world project.
 
 ---
+
+
+## ✨ Features
+
+- **About Me Section**: Introduce yourself and provide an overview of your background.
+- **Portfolio Showcase**: Display your projects with descriptions and links.
+- **Contact Form**: Allow visitors to reach out to you directly.
+- **Responsive Design**: Optimized for both desktop and mobile devices.
+
+---
